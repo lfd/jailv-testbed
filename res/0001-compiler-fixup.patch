@@ -1,0 +1,25 @@
+From cb59ff266482625499f3d431d4141eb39ed61375 Mon Sep 17 00:00:00 2001
+From: Ralf Ramsauer <ralf.ramsauer@oth-regensburg.de>
+Date: Thu, 3 Mar 2022 23:50:30 +0100
+Subject: [PATCH] compiler fixup
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 6b64205..d2cf2fb 100644
+--- a/Makefile
++++ b/Makefile
+@@ -157,7 +157,7 @@ ifndef PLATFORM_RISCV_ABI
+ endif
+ ifndef PLATFORM_RISCV_ISA
+   ifneq ($(PLATFORM_RISCV_TOOLCHAIN_DEFAULT), 1)
+-    PLATFORM_RISCV_ISA = rv$(PLATFORM_RISCV_XLEN)imafdc
++    PLATFORM_RISCV_ISA = rv$(PLATFORM_RISCV_XLEN)g
+   else
+     PLATFORM_RISCV_ISA = $(OPENSBI_CC_ISA)
+   endif
+-- 
+2.36.1
+

@@ -1,0 +1,18 @@
+[submodule "srcs/linux"]
+	path = srcs/linux
+	url = git@github.com:lfd/linux.git
+[submodule "srcs/busybox"]
+	path = srcs/busybox
+	url = git://git.busybox.net/busybox
+[submodule "srcs/opensbi"]
+	path = srcs/opensbi
+	url = git@github.com:riscv-software-src/opensbi.git
+[submodule "srcs/jailhouse"]
+	path = srcs/jailhouse
+	url = git@github.com:lfd/jailhouse.git
+[submodule "srcs/buildroot"]
+	path = srcs/buildroot
+	url = git://git.buildroot.net/buildroot
+[submodule "srcs/qemu"]
+	path = srcs/qemu
+	url = git@github.com:lfd/qemu.git

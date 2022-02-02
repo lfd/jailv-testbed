@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e
+
+JAILHOUSE=jailhouse
+LOADER=linux-loader.bin
+KERN_ADDR=0x80000000
+DTB_ADDR=0x81400000
+INITRD_ADDR=0x82000000
+
+ETC_JH=/etc/jailhouse
+NONROOT_INITRD=/root/rootfs.cpio.gz
+
+# Check whether we're on the NOEL-V target, or in a QEMU VM
+SYS=$(cat /proc/device-tree/compatible)
+if [ $SYS == "riscv-virtio" ]; then
+	SYS="qemu-riscv64"
+	CELL=$ETC_JH/qemu-linux-demo.cell
+	DTB=$ETC_JH/qemu-linux-inmate.dtb
+else
+	SYS="noelv"
+	CELL=$ETC_JH/noelv-linux-demo.cell
+	DTB=$ETC_JH/noelv-linux-inmate.dtb
+fi
+
+CONFIG=$ETC_JH/$SYS
+# If more than one CPU exist, take the MC config
+if [[ -d "/sys/devices/system/cpu/cpu1" ]]; then
+	CONFIG="${CONFIG}.cell"
+else
+	CONFIG="${CONFIG}-uc.cell"
+fi

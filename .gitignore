@@ -1,0 +1,3 @@
+build/
+.gdb_history
+srcs/dts/noel-*-*.dts

@@ -1,0 +1,115 @@
+# Clone all subrepos
+$ git submodule init
+$ git submodule update
+
+1. Build qemu
+
+$ ./do.sh qemu
+
+2. Build Linux Image. The same Image will be used for both, root and non-root cell
+
+$ ./do.sh prepare_linux # Create output directory, applied configuration
+$ ./do.sh linux # Compiles the kernel
+
+3. Build OpenSBI
+# Apply compiler fixup
+$ git -C srcs/opensbi am ../../res/0001-compiler-fixup.patch
+$ ./do.sh opensbi
+
+Now, the file build/opensbi/platform/generic/firmware/fw_payload.elf will hold
+the bootable Linux kernel Image.
+
+4. Build Jailhouse
+$ ./do.sh jailhouse
+
+5. Build buildroot. This will build both: non-root and root buildroot.
+$ ./do.sh prepare_buildroot
+$ ./do.sh buildroot
+
+6. Compile Device Trees
+$ ./do.sh dts
+
+Everything required for booting on the NOEL-V is prepared now:
+
+- DTBs: build/dtb
+- OpenSBI/Linux Binary: build/opensbi/platform/generic/firmware/fw_payload.elf
+- Initrd: build/buildroot_root/images/rootfs.cpio.gz
+
+Those binaries can be loaded with grmon3:
+
+grmon3> reset; cpu en 0; cpu en 1; cpu en 2; cpu en 3; cpu en 4; cpu en 5
+grmon3> forward enable uart2
+grmon3> load fw_payload.elf
+grmon3> load -binary rootfs.cpio.gz 0x3000000
+grmon3> dtb noel-mc-eth.dtb
+grmon3> run
+
+Alternatively, boot those binaries with QEMU:
+
+$ ./do.sh start uc # single core variant
+$ ./do.sh start mc # multicore variant
+
+To attach the debugger to QEMU, type in another terminal:
+
+$ ./do.sh debugger
+
+5. Starting Jailhouse
+
+Next, you must ssh into your target and start jailhouse
+$ ssh noelv(qemu)
+
+Inside your target, load the Jailhouse Kernel module:
+$ insmod jailhouse.ko
+
+Enable the hypervisor with the helper script jh-en:
+$ jh-en
+
+6. Loading bare-metal inmates
+
+To load a timer-demo bare-metal inmate, first create a jailhouse cell:
+
+On NOEL-V:
+$ jailhouse cell create /etc/jailhouse/noelv-tiny-demo.cell
+On Qemu:
+$ jailhouse cell create /etc/jailhouse/qemu-riscv64-tiny-demo.cell
+
+And load the inmate binary (same for both platforms):
+$ jailhouse cell load tiny-demo /etc/jailhouse/timer-demo.bin
+
+The last step is to start the cell:
+$ jailhouse cell start tiny-demo
+
+You should see the cell's output on the grmon interface. To destroy the cell,
+type:
+
+$ jailhouse cell destroy tiny-demo
+
+Finally, you can also disable the hypervisor:
+
+$ jailhouse disable
+
+7. Starting Non-Root Linux Inmates
+
+After enabling the hypervisor, simply type:
+
+$ jh-linux
+
+This tiny helper script will perform all steps that are required for booting
+Linux. Please refer to the script for more details.
+
+The non-root cell's output will be the forwarded uart and is accessible via
+grmon.
+
+6.1 Inter-Cell communication
+
+Both cell contain a virtual ethernet device (ivshmem). On the root cell (via
+ssh) type:
+
+$ ifconfig enp0s16 192.168.178.1
+
+On the non-root cell (via grmon), type:
+
+$ ifconfig eth0 192.168.178.2
+
+The virtual connection between both cells is now established and can be tested
+via standard ethernet tooling (e.g., ping).
