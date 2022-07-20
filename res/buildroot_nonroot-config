@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2022.05-224-g7763ba7007 Configuration
+# Buildroot 2022.05-476-g4245a28f0e Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -178,7 +178,7 @@ BR2_KERNEL_HEADERS_5_17=y
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="5.17.13"
+BR2_DEFAULT_KERNEL_HEADERS="5.17.15"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -505,9 +505,10 @@ BR2_PACKAGE_KODI_ARCH_SUPPORTS=y
 # BR2_PACKAGE_MUSEPACK is not set
 
 #
-# ncmpc needs a toolchain w/ C++, wchar, threads, gcc >= 7
+# ncmpc needs a toolchain w/ C++, wchar, threads, gcc >= 10
 #
 # BR2_PACKAGE_OPUS_TOOLS is not set
+# BR2_PACKAGE_PIPEWIRE is not set
 BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 
 #
@@ -817,6 +818,7 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 #
 # BR2_PACKAGE_UNIONFS is not set
 # BR2_PACKAGE_XFSPROGS is not set
+# BR2_PACKAGE_ZEROFREE is not set
 
 #
 # zfs needs a Linux kernel to be built
@@ -1101,7 +1103,12 @@ BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 # cc-tool needs a toolchain w/ C++, threads, wchar, gcc >= 4.9 
 #
 # BR2_PACKAGE_CDRKIT is not set
+# BR2_PACKAGE_CRUCIBLE is not set
 # BR2_PACKAGE_CRYPTSETUP is not set
+
+#
+# cwiid needs a toolchain w/ dynamic lib, threads, wchar, headers >= 3.18
+#
 
 #
 # dahdi-linux needs a Linux kernel to be built
@@ -1324,7 +1331,7 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 #
 
 #
-# upower needs a toolchain w/ threads, wchar, gcc >= 4.9
+# upower needs a toolchain w/ threads, wchar
 #
 # BR2_PACKAGE_USB_MODESWITCH is not set
 # BR2_PACKAGE_USB_MODESWITCH_DATA is not set
@@ -1843,7 +1850,6 @@ BR2_PACKAGE_PROVIDES_HOST_OPENSSL="host-libopenssl"
 #
 # pangomm needs a toolchain w/ C++, wchar, threads, gcc >= 7
 #
-# BR2_PACKAGE_PIPEWIRE is not set
 # BR2_PACKAGE_PIXMAN is not set
 
 #
