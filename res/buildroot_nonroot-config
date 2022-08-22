@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2022.05-1003-g466d65d73e Configuration
+# Buildroot 2022.08-rc1-112-gfc429c4dc6 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -1349,7 +1349,7 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 # BR2_PACKAGE_USB_MODESWITCH_DATA is not set
 
 #
-# usbguard needs a toolchain w/ C++, threads, dynamic library, gcc >= 7
+# usbguard needs a toolchain w/ C++, threads, dynamic library, gcc >= 8
 #
 
 #
@@ -2497,7 +2497,7 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 #
 
 #
-# pistache needs a glibc toolchain w/ C++, gcc >= 7, threads, wchar, not binutils bug 27597
+# pistache needs a toolchain w/ C++, gcc >= 7, threads, wchar, not binutils bug 27597
 #
 # BR2_PACKAGE_QDECODER is not set
 
@@ -2604,12 +2604,12 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 #
 
 #
-# clang needs a toolchain w/ wchar, threads, C++, gcc >= 5, dynamic library
+# clang needs a toolchain w/ wchar, threads, C++, gcc >= 5, dynamic library, host gcc >= 5
 #
 # BR2_PACKAGE_CMOCKA is not set
 
 #
-# compiler-rt requires llvm to be enabled and a glibc toolchain
+# compiler-rt requires llvm to be enabled, a glibc toolchain, host gcc >= 5
 #
 
 #
@@ -2822,7 +2822,7 @@ BR2_PACKAGE_LLVM_ARCH_SUPPORTS=y
 BR2_PACKAGE_LLVM_TARGET_ARCH="riscv64"
 
 #
-# llvm needs a toolchain w/ wchar, threads, C++, gcc >= 5, dynamic library
+# llvm needs a toolchain w/ wchar, threads, C++, gcc >= 5, dynamic library, host gcc >= 5
 #
 
 #
@@ -3500,7 +3500,7 @@ BR2_PACKAGE_IFUPDOWN_SCRIPTS=y
 #
 
 #
-# zeek needs a toolchain w/ C++, wchar, threads, dynamic library
+# zeek needs a toolchain w/ C++, wchar, threads, dynamic library, gcc >= 7, host gcc >= 7
 #
 
 #
