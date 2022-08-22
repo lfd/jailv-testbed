@@ -4,12 +4,15 @@ set -e
 
 source jh-env
 
+KERNEL=/root/Image
+#KERNEL=/root/grinch.bin
+
 if [[ -d "/sys/devices/system/cpu/cpu1" ]]; then
 	$JAILHOUSE cell create $CELL
 	$JAILHOUSE cell load 1 \
 		/etc/jailhouse/$LOADER -a 0 \
 		-s "kernel=$KERN_ADDR dtb=$DTB_ADDR" -a 0x100 \
-		/root/Image -a $KERN_ADDR \
+		$KERNEL -a $KERN_ADDR \
 		$DTB -a $DTB_ADDR \
 		$NONROOT_INITRD -a $INITRD_ADDR
 	$JAILHOUSE cell start 1
