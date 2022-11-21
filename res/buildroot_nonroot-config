@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2022.08-535-g5b5d3befef Configuration
+# Buildroot 2022.11-rc2-16-g81a02457b0 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -522,6 +522,7 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 #
 # squeezelite needs a toolchain w/ wchar, NPTL, dynamic library
 #
+# BR2_PACKAGE_TINYCOMPRESS is not set
 
 #
 # tovid needs a toolchain w/ threads, C++, wchar, gcc >= 4.9
@@ -638,7 +639,15 @@ BR2_PACKAGE_GDB_ARCH_SUPPORTS=y
 # BR2_PACKAGE_IOZONE is not set
 
 #
+# kmemd needs a uClibc or glibc toolchain w/ wchar, dynamic library, threads, headers >= 5.14
+#
+
+#
 # latencytop needs a toolchain w/ wchar, threads
+#
+
+#
+# libbpf needs a uClibc or glibc toolchain w/ wchar, dynamic library, threads, headers >= 4.13
 #
 # BR2_PACKAGE_LMBENCH is not set
 BR2_PACKAGE_LTP_TESTSUITE_ARCH_SUPPORTS=y
@@ -1227,6 +1236,10 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 # BR2_PACKAGE_MBPFAN is not set
 # BR2_PACKAGE_MDADM is not set
 # BR2_PACKAGE_MDEVD is not set
+
+#
+# mdio-tools needs a Linux kernel to be built
+#
 # BR2_PACKAGE_MEMTESTER is not set
 # BR2_PACKAGE_MEMTOOL is not set
 
@@ -1284,6 +1297,10 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 
 #
 # rtl8189fs needs a Linux kernel to be built
+#
+
+#
+# rtl8192eu needs a Linux kernel to be built
 #
 
 #
@@ -2209,7 +2226,6 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 #
 # libcamera-apps needs a toolchain w/ C++, threads, wchar, dynamic library, gcc >= 8
 #
-# BR2_PACKAGE_LIBDCADEC is not set
 # BR2_PACKAGE_LIBDVBCSA is not set
 # BR2_PACKAGE_LIBDVBPSI is not set
 
@@ -2282,6 +2298,10 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 #
 # BR2_PACKAGE_C_ARES is not set
 # BR2_PACKAGE_CGIC is not set
+
+#
+# cni-plugins needs a glibc or musl toolchain w/ threads
+#
 
 #
 # cppzmq needs a toolchain w/ C++, threads
@@ -2932,6 +2952,10 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 
 #
 # augeas needs a toolchain w/ wchar
+#
+
+#
+# docopt-cpp needs a toolchain w/ C++, gcc >= 4.7
 #
 
 #
@@ -3642,6 +3666,7 @@ BR2_PACKAGE_URANDOM_SCRIPTS=y
 #
 # BR2_PACKAGE_APG is not set
 # BR2_PACKAGE_AT is not set
+# BR2_PACKAGE_CATATONIT is not set
 # BR2_PACKAGE_CCRYPT is not set
 # BR2_PACKAGE_DIALOG is not set
 # BR2_PACKAGE_DTACH is not set
@@ -3929,6 +3954,7 @@ BR2_TARGET_ROOTFS_CPIO_GZIP=y
 # BR2_PACKAGE_HOST_ASN1C is not set
 # BR2_PACKAGE_HOST_BABELTRACE2 is not set
 # BR2_PACKAGE_HOST_BMAP_TOOLS is not set
+# BR2_PACKAGE_HOST_BOOTGEN is not set
 # BR2_PACKAGE_HOST_BTRFS_PROGS is not set
 # BR2_PACKAGE_HOST_CHECKPOLICY is not set
 # BR2_PACKAGE_HOST_CHECKSEC is not set
@@ -3993,6 +4019,7 @@ BR2_PACKAGE_HOST_PATCHELF=y
 # BR2_PACKAGE_HOST_PYTHON_CYTHON is not set
 # BR2_PACKAGE_HOST_PYTHON_GREENLET is not set
 # BR2_PACKAGE_HOST_PYTHON_LXML is not set
+# BR2_PACKAGE_HOST_PYTHON_PYYAML is not set
 # BR2_PACKAGE_HOST_PYTHON_SIX is not set
 # BR2_PACKAGE_HOST_PYTHON_XLRD is not set
 # BR2_PACKAGE_HOST_PYTHON3 is not set
@@ -4030,6 +4057,7 @@ BR2_PACKAGE_PROVIDES_HOST_RUSTC="host-rust-bin"
 #
 # Legacy options removed in 2022.11
 #
+# BR2_PACKAGE_LIBDCADEC is not set
 # BR2_KERNEL_HEADERS_5_17 is not set
 # BR2_iwmmxt is not set
 # BR2_PACKAGE_UHD_N230 is not set
