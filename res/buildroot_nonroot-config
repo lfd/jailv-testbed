@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2022.11-rc2-16-g81a02457b0 Configuration
+# Buildroot 2022.11-843-gac2b26fba2 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -92,13 +92,13 @@ BR2_TOOLCHAIN_BUILDROOT_LIBC="uclibc"
 # BR2_KERNEL_HEADERS_5_4 is not set
 # BR2_KERNEL_HEADERS_5_10 is not set
 # BR2_KERNEL_HEADERS_5_15 is not set
-# BR2_KERNEL_HEADERS_5_19 is not set
-BR2_KERNEL_HEADERS_6_0=y
+# BR2_KERNEL_HEADERS_6_0 is not set
+BR2_KERNEL_HEADERS_6_1=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="6.0.1"
+BR2_DEFAULT_KERNEL_HEADERS="6.1.2"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -225,8 +225,9 @@ BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_17=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_18=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_19=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_0=y
+BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_1=y
 BR2_TOOLCHAIN_HEADERS_LATEST=y
-BR2_TOOLCHAIN_HEADERS_AT_LEAST="6.0"
+BR2_TOOLCHAIN_HEADERS_AT_LEAST="6.1"
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_3=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_4=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_5=y
@@ -469,6 +470,10 @@ BR2_PACKAGE_KODI_ARCH_SUPPORTS=y
 
 #
 # kodi needs python3 w/ .py modules, a uClibc or glibc toolchain w/ C++, threads, wchar, dynamic library, gcc >= 4.9
+#
+
+#
+# kodi needs udev support for gbm
 #
 
 #
@@ -775,7 +780,10 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 #
 # curlftpfs needs a toolchain w/ wchar, threads, dynamic library
 #
-# BR2_PACKAGE_DAVFS2 is not set
+
+#
+# davfs2 needs a glibc toolchain
+#
 
 #
 # dosfstools needs a toolchain w/ wchar
@@ -1193,6 +1201,7 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 #
 # gvfs needs a toolchain w/ wchar, threads, dynamic library
 #
+# BR2_PACKAGE_HDDTEMP is not set
 # BR2_PACKAGE_HWDATA is not set
 # BR2_PACKAGE_HWLOC is not set
 # BR2_PACKAGE_INPUT_EVENT_DAEMON is not set
@@ -1310,6 +1319,7 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 #
 # rtl8723ds needs a Linux kernel to be built
 #
+# BR2_PACKAGE_RTL8723DS_BT is not set
 
 #
 # rtl8812au-aircrack-ng needs a Linux kernel to be built
@@ -1317,6 +1327,10 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 
 #
 # rtl8821au needs a Linux kernel to be built
+#
+
+#
+# rtl8821cu needs a Linux kernel to be built
 #
 # BR2_PACKAGE_SANE_BACKENDS is not set
 # BR2_PACKAGE_SDPARM is not set
@@ -1901,6 +1915,7 @@ BR2_PACKAGE_PROVIDES_HOST_OPENSSL="host-libopenssl"
 #
 # poppler needs a toolchain w/ wchar, C++, threads, dynamic library, gcc >= 7
 #
+# BR2_PACKAGE_STB is not set
 # BR2_PACKAGE_TIFF is not set
 # BR2_PACKAGE_WAYLAND is not set
 BR2_PACKAGE_WEBKITGTK_ARCH_SUPPORTS=y
@@ -2563,6 +2578,7 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 # snmp++ needs a toolchain w/ threads, C++, dynamic library
 #
 # BR2_PACKAGE_SOFIA_SIP is not set
+# BR2_PACKAGE_SSCEP is not set
 
 #
 # sysrepo needs a toolchain w/ C++, NPTL, dynamic library, gcc >= 4.8
@@ -3048,12 +3064,12 @@ BR2_PACKAGE_BITCOIN_ARCH_SUPPORTS=y
 # BR2_PACKAGE_EMPTY is not set
 
 #
-# gnuradio needs a toolchain w/ C++, NPTL, wchar, dynamic library
+# gnuradio needs a toolchain w/ C++, NPTL, wchar, dynamic library, gcc >= 8
 #
 # BR2_PACKAGE_GOOGLEFONTDIRECTORY is not set
 
 #
-# gqrx needs a toolchain w/ C++, threads, wchar, dynamic library
+# gqrx needs a toolchain w/ C++, threads, wchar, dynamic library, gcc >= 8
 #
 
 #
@@ -3094,6 +3110,7 @@ BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET=y
 # taskd needs a toolchain w/ C++, wchar, dynamic library
 #
 # BR2_PACKAGE_XUTIL_UTIL_MACROS is not set
+BR2_PACKAGE_Z3_ARCH_SUPPORTS=y
 
 #
 # Networking applications
@@ -3419,10 +3436,6 @@ BR2_PACKAGE_IFUPDOWN_SCRIPTS=y
 # putty needs a toolchain w/ wchar
 #
 # BR2_PACKAGE_QUAGGA is not set
-
-#
-# rabbitmq-server needs erlang
-#
 # BR2_PACKAGE_RADVD is not set
 # BR2_PACKAGE_REAVER is not set
 # BR2_PACKAGE_REDIR is not set
@@ -3729,7 +3742,10 @@ BR2_PACKAGE_GNUPG2_DEPENDS=y
 #
 # BR2_PACKAGE_CPULIMIT is not set
 # BR2_PACKAGE_CPULOAD is not set
-# BR2_PACKAGE_CRUN is not set
+
+#
+# crun needs a glibc or musl toolchain
+#
 # BR2_PACKAGE_DAEMON is not set
 # BR2_PACKAGE_DC3DD is not set
 
@@ -3941,7 +3957,6 @@ BR2_TARGET_ROOTFS_CPIO_GZIP=y
 # BR2_TARGET_BEAGLEV_DDRINIT is not set
 # BR2_TARGET_BEAGLEV_SECONDBOOT is not set
 # BR2_TARGET_OPENSBI is not set
-# BR2_TARGET_SUN20I_D1_SPL is not set
 # BR2_TARGET_UBOOT is not set
 
 #
@@ -4055,8 +4070,23 @@ BR2_PACKAGE_PROVIDES_HOST_RUSTC="host-rust-bin"
 #
 
 #
+# Legacy options removed in 2023.02
+#
+BR2_PACKAGE_QEMU_CUSTOM_TARGETS=""
+# BR2_PACKAGE_XDRIVER_XF86_INPUT_KEYBOARD is not set
+# BR2_TARGET_SUN20I_D1_SPL is not set
+# BR2_PACKAGE_PYTHON_M2R is not set
+# BR2_PACKAGE_MESA3D_XVMC is not set
+# BR2_KERNEL_HEADERS_5_19 is not set
+# BR2_PACKAGE_XDRIVER_XF86_VIDEO_TGA is not set
+# BR2_PACKAGE_XDRIVER_XF86_VIDEO_GLINT is not set
+# BR2_PACKAGE_USBREDIR_SERVER is not set
+
+#
 # Legacy options removed in 2022.11
 #
+# BR2_PACKAGE_RABBITMQ_SERVER is not set
+# BR2_PACKAGE_LIBOPENSSL_ENABLE_RC5 is not set
 # BR2_PACKAGE_LIBDCADEC is not set
 # BR2_KERNEL_HEADERS_5_17 is not set
 # BR2_iwmmxt is not set
