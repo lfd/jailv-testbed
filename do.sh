@@ -130,10 +130,10 @@ function start_qemu() {
 		-monitor telnet:127.0.0.1:55555,server,nowait \
 		-kernel $KERNEL \
 		-initrd $INITRD \
-		-machine virt \
+		-machine $QEMU_MACHINE \
 		-netdev user,id=net,hostfwd=::33333-:22,hostfwd=::33344-:23 \
 		-device e1000e,addr=2.0,netdev=net \
-		-append "mem=510M ip=dhcp" \
+		-append "mem=510M ip=dhcp earlycon=sbi" \
 		-s
 }
 
@@ -256,11 +256,23 @@ elif [[ $cmd == "buildroot" ]]; then
 	buildroot
 elif [[ $cmd == "prepare_buildroot" ]]; then
 	prepare_buildroot
+elif [[ $cmd == "qemu_aplic_uc" ]]; then
+	QEMU_MACHINE="virt,aia=aplic"
+	build_jailhouse
+	#build_initrd
+	start_qemu uc virt
+elif [[ $cmd == "qemu_aplic_mc" ]]; then
+	QEMU_MACHINE="virt,aia=aplic"
+	build_jailhouse
+	#build_initrd
+	start_qemu mc virt
 elif [[ $cmd == "qemu_uc" ]]; then
+	QEMU_MACHINE="virt"
 	build_jailhouse
 	#build_initrd
 	start_qemu uc virt
 elif [[ $cmd == "qemu_mc" ]]; then
+	QEMU_MACHINE="virt"
 	build_jailhouse
 	#build_initrd
 	start_qemu mc virt

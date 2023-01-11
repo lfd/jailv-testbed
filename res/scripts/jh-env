@@ -14,7 +14,7 @@ NONROOT_INITRD=/root/rootfs.cpio.gz
 # Check whether we're on the NOEL-V target, or in a QEMU VM
 SYS=$(cat /proc/device-tree/compatible)
 if [ $SYS == "riscv-virtio" ]; then
-	SYS="qemu-riscv64"
+	SYS="qemu"
 	CELL=$ETC_JH/qemu-linux-demo.cell
 	DTB=$ETC_JH/qemu-linux-inmate.dtb
 else
@@ -23,10 +23,15 @@ else
 	DTB=$ETC_JH/noelv-linux-inmate.dtb
 fi
 
+PLIC="plic"
+if [ -d /proc/device-tree/soc/aplic@c000000/ ]; then
+	PLIC="aplic"
+fi
+
 CONFIG=$ETC_JH/$SYS
 # If more than one CPU exist, take the MC config
 if [[ -d "/sys/devices/system/cpu/cpu1" ]]; then
-	CONFIG="${CONFIG}.cell"
+	CONFIG="${CONFIG}-${PLIC}-mc.cell"
 else
-	CONFIG="${CONFIG}-uc.cell"
+	CONFIG="${CONFIG}-${PLIC}-uc.cell"
 fi
