@@ -140,7 +140,10 @@ function start_qemu() {
 function build_initrd() {
 	cd $dst_rootfs
 
-	cp -av $KERNEL .
+	mkdir -p root
+	cp -av $KERNEL ./root/
+	cp -av ../../buildroot_nonroot/images/rootfs.cpio.gz ./root/
+
 	mkdir -p ./etc/jailhouse
 	cp -av $jailhouse/configs/riscv/dts/*.dtb \
 		$jailhouse/configs/riscv/*.cell \
@@ -150,7 +153,7 @@ function build_initrd() {
 	cp -av $jailhouse/driver/jailhouse.ko .
 	cp -av $jailhouse/hypervisor/jailhouse.bin ./lib/firmware
 	cp -av $jailhouse/tools/jailhouse ./sbin/jailhouse
-	cp -av $jailhouse/tools/jailhouse-cell-stats ./sbin/jailhouse
+	cp -av $jailhouse/tools/jailhouse-cell-stats ./sbin/jailhouse-cell-stats
 
 	cp -av $busybox_res/rcS ./etc/init.d/rcS
 	cp -av $busybox_res/fstab ./etc/fstab

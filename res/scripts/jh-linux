@@ -7,6 +7,8 @@ source jh-env
 KERNEL=/root/Image
 #KERNEL=/root/grinch.bin
 
+echo "Using config $CELL DTS: $DTB"
+
 if [[ -d "/sys/devices/system/cpu/cpu1" ]]; then
 	$JAILHOUSE cell create $CELL
 	$JAILHOUSE cell load 1 \

@@ -11,21 +11,21 @@ INITRD_ADDR=0x82000000
 ETC_JH=/etc/jailhouse
 NONROOT_INITRD=/root/rootfs.cpio.gz
 
+PLIC="plic"
+if [ -d /proc/device-tree/soc/aplic@c000000/ ]; then
+	PLIC="aplic"
+fi
+
 # Check whether we're on the NOEL-V target, or in a QEMU VM
 SYS=$(cat /proc/device-tree/compatible)
 if [ $SYS == "riscv-virtio" ]; then
 	SYS="qemu"
-	CELL=$ETC_JH/qemu-linux-demo.cell
-	DTB=$ETC_JH/qemu-linux-inmate.dtb
+	CELL=$ETC_JH/qemu-linux-demo-${PLIC}.cell
+	DTB=$ETC_JH/qemu-linux-inmate-${PLIC}.dtb
 else
 	SYS="noelv"
 	CELL=$ETC_JH/noelv-linux-demo.cell
 	DTB=$ETC_JH/noelv-linux-inmate.dtb
-fi
-
-PLIC="plic"
-if [ -d /proc/device-tree/soc/aplic@c000000/ ]; then
-	PLIC="aplic"
 fi
 
 CONFIG=$ETC_JH/$SYS
