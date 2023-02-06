@@ -269,12 +269,12 @@ elif [[ $cmd == "qemu_aplic_mc" ]]; then
 	build_jailhouse
 	#build_initrd
 	start_qemu mc virt
-elif [[ $cmd == "qemu_uc" ]]; then
+elif [[ $cmd == "qemu_plic_uc" ]]; then
 	QEMU_MACHINE="virt"
 	build_jailhouse
 	#build_initrd
 	start_qemu uc virt
-elif [[ $cmd == "qemu_mc" ]]; then
+elif [[ $cmd == "qemu_plic_mc" ]]; then
 	QEMU_MACHINE="virt"
 	build_jailhouse
 	#build_initrd
