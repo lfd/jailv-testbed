@@ -269,6 +269,16 @@ elif [[ $cmd == "qemu_aplic_mc" ]]; then
 	build_jailhouse
 	#build_initrd
 	start_qemu mc virt
+elif [[ $cmd == "qemu_aplic_imsic_uc" ]]; then
+	QEMU_MACHINE="virt,aia=aplic-imsic,aia-guests=2"
+	build_jailhouse
+	#build_initrd
+	start_qemu uc virt
+elif [[ $cmd == "qemu_aplic_imsic_mc" ]]; then
+	QEMU_MACHINE="virt,aia=aplic-imsic,aia-guests=2"
+	build_jailhouse
+	#build_initrd
+	start_qemu mc virt
 elif [[ $cmd == "qemu_plic_uc" ]]; then
 	QEMU_MACHINE="virt"
 	build_jailhouse
