@@ -21,7 +21,7 @@ res=$(realpath res/)
 # requires absolute path
 dst_busybox="$PWD/build/busybox/"
 dst_buildroot_root="$PWD/build/buildroot_root/"
-dst_buildroot_nonroot="$PWD/build/buildroot_nonroot/"
+dst_buildroot_non_root="$PWD/build/buildroot_non_root/"
 dst_initrd="$PWD/build/initrd/"
 dst_rootfs="$dst_initrd/rootfs/"
 dst_f_initrd="$dst_initrd/initramfs.cpio"
@@ -30,7 +30,8 @@ dst_opensbi="$PWD/build/opensbi/"
 dst_qemu="$PWD/build/qemu/"
 dtb="$PWD/build/dtb/"
 
-buildroot_overlay="$PWD/build/buildroot-overlay"
+buildroot_root_overlay="$PWD/build/buildroot_root_overlay"
+buildroot_non_root_overlay="$PWD/build/buildroot_non_root_overlay"
 
 busybox_res="$res/busybox/"
 
@@ -50,49 +51,63 @@ function debug() {
 function prepare_buildroot() {
 	cd $buildroot
 	make O=$dst_buildroot_root defconfig
-	make O=$dst_buildroot_nonroot defconfig
+	make O=$dst_buildroot_non_root defconfig
 	cd ../..
-	cp res/buildroot-config $dst_buildroot_root/.config
-	cp res/buildroot_nonroot-config $dst_buildroot_nonroot/.config
+	cp res/buildroot_root-config $dst_buildroot_root/.config
+	cp res/buildroot_non_root-config $dst_buildroot_non_root/.config
 	cd $dst_buildroot_root
 	make oldconfig
-	cd $dst_buildroot_nonroot
+	cd $dst_buildroot_non_root
 	make oldconfig
 }
 
-function prepare_overlay() {
+function prepare_non_root_overlay() {
+	# Prepare non-root overlay
+	mkdir -p $buildroot_non_root_overlay/etc/systemd/network \
+		 $buildroot_non_root_overlay/root/.ssh
+	cp -av res/1-jailhouse-non-root.network $buildroot_non_root_overlay/etc/systemd/network/
+	tar -xvf res/ssh.tar -C $buildroot_non_root_overlay/
+	cp -v res/authorized_keys $buildroot_non_root_overlay/root/.ssh/
+	echo bash > $buildroot_non_root_overlay/root/.bash_login
+}
+
+function prepare_root_overlay() {
 	# Prepare root overlay
-	mkdir -p $buildroot_overlay/usr/bin/ \
-		 $buildroot_overlay/root/.ssh \
-		 $buildroot_overlay/etc/jailhouse \
-		 $buildroot_overlay/usr/lib/firmware/
-	tar -xvf res/ssh.tar -C $buildroot_overlay/
-	cp -v build/buildroot_nonroot/images/rootfs.cpio.gz $buildroot_overlay/root/
-	cp -v res/authorized_keys $buildroot_overlay/root/.ssh/
-	cp -v res/bash_history $buildroot_overlay/root/.bash_history
-	cp -v res/bashrc $buildroot_overlay/root/.bashrc
-	echo bash > $buildroot_overlay/root/.bash_login
-	cp -v $KERNEL $buildroot_overlay/root/
+	mkdir -p $buildroot_root_overlay/usr/bin/ \
+		 $buildroot_root_overlay/root/.ssh \
+		 $buildroot_root_overlay/etc/jailhouse \
+		 $buildroot_root_overlay/usr/lib/firmware/ \
+		 $buildroot_root_overlay/etc/systemd/network/
+	tar -xvf res/ssh.tar -C $buildroot_root_overlay/
+	cp -v build/buildroot_non_root/images/rootfs.cpio.gz $buildroot_root_overlay/root/
+	cp -v res/authorized_keys $buildroot_root_overlay/root/.ssh/
+	cp -v res/bash_history $buildroot_root_overlay/root/.bash_history
+	cp -v res/bashrc $buildroot_root_overlay/root/.bashrc
+	echo bash > $buildroot_root_overlay/root/.bash_login
+	cp -v $KERNEL $buildroot_root_overlay/root/
 
-	cp -av $jailhouse/driver/jailhouse.ko $buildroot_overlay/root/
-	cp -av $jailhouse/hypervisor/jailhouse.bin $buildroot_overlay/usr/lib/firmware
-	cp -av $jailhouse/tools/jailhouse $buildroot_overlay/usr/bin/
-	cp -av $jailhouse/tools/jailhouse-cell-stats $buildroot_overlay/usr/bin/
+	cp -av $jailhouse/driver/jailhouse.ko $buildroot_root_overlay/root/
+	cp -av $jailhouse/hypervisor/jailhouse.bin $buildroot_root_overlay/usr/lib/firmware
+	cp -av $jailhouse/tools/jailhouse $buildroot_root_overlay/usr/bin/
+	cp -av $jailhouse/tools/jailhouse-cell-stats $buildroot_root_overlay/usr/bin/
 
-	cp -av $jailhouse/configs/riscv/*.cell $buildroot_overlay/etc/jailhouse/
-	cp -av $jailhouse/configs/riscv/dts/*.dtb $buildroot_overlay/etc/jailhouse
-	cp -av $jailhouse/inmates/demos/riscv/*.bin $buildroot_overlay/etc/jailhouse
-	cp -av $jailhouse/inmates/tools/riscv/*.bin $buildroot_overlay/etc/jailhouse
-	cp -av res/scripts/* $buildroot_overlay/usr/bin/
+	cp -av $jailhouse/configs/riscv/*.cell $buildroot_root_overlay/etc/jailhouse/
+	cp -av $jailhouse/configs/riscv/dts/*.dtb $buildroot_root_overlay/etc/jailhouse
+	cp -av $jailhouse/inmates/demos/riscv/*.bin $buildroot_root_overlay/etc/jailhouse
+	cp -av $jailhouse/inmates/tools/riscv/*.bin $buildroot_root_overlay/etc/jailhouse
+	cp -av res/scripts/* $buildroot_root_overlay/usr/bin/
+	cp -av res/1-jailhouse-root.network $buildroot_root_overlay/etc/systemd/network/
 }
 
 function buildroot() {
+	prepare_non_root_overlay
+
 	# Build buildroot for non-root cell
-	cd $dst_buildroot_nonroot
+	cd $dst_buildroot_non_root
 	make
 	cd ../..
 
-	prepare_overlay
+	prepare_root_overlay
 
 	cd $dst_buildroot_root
 	make
@@ -142,7 +157,7 @@ function build_initrd() {
 
 	mkdir -p root
 	cp -av $KERNEL ./root/
-	cp -av ../../buildroot_nonroot/images/rootfs.cpio.gz ./root/
+	cp -av ../../buildroot_non_root/images/rootfs.cpio.gz ./root/
 
 	mkdir -p ./etc/jailhouse
 	cp -av $jailhouse/configs/riscv/dts/*.dtb \
@@ -210,8 +225,8 @@ function deploy() {
 }
 
 function deploy_target() {
-	prepare_overlay
-	cd $buildroot_overlay
+	prepare_root_overlay
+	cd $buildroot_root_overlay
 	rsync --chown root:root -avz -e ssh --owner root \
 		. $hw_target:/
 
