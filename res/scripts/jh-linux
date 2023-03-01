@@ -7,15 +7,17 @@ source jh-env
 KERNEL=/root/Image
 #KERNEL=/root/grinch.bin
 
-echo "Using config $CELL DTS: $DTB"
+CELL_NAME="linux-demo"
+
+echo "Using config $CELL DTS: $LINUX_DTB"
 
 if [[ -d "/sys/devices/system/cpu/cpu1" ]]; then
-	$JAILHOUSE cell create $CELL
-	$JAILHOUSE cell load 1 \
+	$JAILHOUSE cell create $LINUX_CELL
+	$JAILHOUSE cell load $CELL_NAME \
 		/etc/jailhouse/$LOADER -a 0 \
 		-s "kernel=$KERN_ADDR dtb=$DTB_ADDR" -a 0x100 \
 		$KERNEL -a $KERN_ADDR \
-		$DTB -a $DTB_ADDR \
+		$LINUX_DTB -a $DTB_ADDR \
 		$NONROOT_INITRD -a $INITRD_ADDR
-	$JAILHOUSE cell start 1
+	$JAILHOUSE cell start $CELL_NAME
 fi

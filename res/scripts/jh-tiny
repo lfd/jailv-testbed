@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+source jh-env
+
+CELL_NAME="qemu-inmate-demo"
+
+$JAILHOUSE cell create $TINY_CELL
+$JAILHOUSE cell load $CELL_NAME $TINY_INMATE -a 0
+$JAILHOUSE cell start $CELL_NAME

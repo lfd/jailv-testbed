@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while true; do
+	echo Enabling...
+	jh-en
+	echo Enabled!
+	sleep 0.5
+	echo Disabling...
+	jh-dis
+	echo Disabled
+	sleep 0.5
+done

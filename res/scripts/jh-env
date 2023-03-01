@@ -25,12 +25,14 @@ fi
 SYS=$(cat /proc/device-tree/compatible)
 if [ $SYS == "riscv-virtio" ]; then
 	SYS="qemu"
-	CELL=$ETC_JH/qemu-linux-demo-${PLIC}${IMSIC}.cell
-	DTB=$ETC_JH/qemu-linux-inmate-${PLIC}${IMSIC}.dtb
+	LINUX_CELL=$ETC_JH/qemu-linux-demo-${PLIC}${IMSIC}.cell
+	LINUX_DTB=$ETC_JH/qemu-linux-inmate-${PLIC}${IMSIC}.dtb
+	TINY_CELL=$ETC_JH/qemu-inmate-demo.cell
+	TINY_INMATE=$ETC_JH/timer-demo.bin
 else
 	SYS="noelv"
-	CELL=$ETC_JH/noelv-linux-demo.cell
-	DTB=$ETC_JH/noelv-linux-inmate.dtb
+	LINUX_CELL=$ETC_JH/noelv-linux-demo.cell
+	LINUX_DTB=$ETC_JH/noelv-linux-inmate.dtb
 fi
 
 CONFIG=$ETC_JH/$SYS
