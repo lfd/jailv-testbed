@@ -1,12 +1,57 @@
 #!/bin/bash
 
-while true; do
-	echo Enabling...
-	jh-en
-	echo Enabled!
-	sleep 0.5
-	echo Disabling...
-	jh-dis
-	echo Disabled
-	sleep 0.5
-done
+#while true; do
+#	echo Enabling...
+#	jh-en
+#	echo Enabled!
+#	sleep 0.5
+#	echo Disabling...
+#	jh-dis
+#	echo Disabled
+#	sleep 0.5
+#done
+
+alias jh='jailhouse'
+
+source jh-env
+
+jh-en
+
+# jh cell create /etc/jailhouse/1.cell
+# jh cell create /etc/jailhouse/2.cell
+# 
+# jh cell load eins /etc/jailhouse/timer-demo.bin
+# jh cell load zwei /etc/jailhouse/timer-demo.bin
+# 
+# jh cell start eins
+# sleep 0.750
+# jh cell start zwei
+# 
+# sleep 5
+# 
+# jh cell destroy eins
+# sleep 0.4
+# jh cell destroy zwei
+# 
+# sleep 0.4
+# jh-dis
+
+#jh-dis
+
+jh cell create $TINY_CELL
+
+jh-linux
+
+jh cell load qemu-inmate-demo /etc/jailhouse/timer-demo.bin
+
+sleep 30
+
+jh cell start qemu-inmate-demo
+
+sleep 5
+ping 192.168.0.2 -c 2
+
+jh cell destroy qemu-inmate-demo
+jh cell destroy linux-demo
+
+jh-dis
