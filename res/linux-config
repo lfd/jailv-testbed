@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/riscv 6.2.0-rc6 Kernel Configuration
+# Linux/riscv 6.2.0 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="riscv64-linux-gnu-gcc (GCC) 12.2.0"
 CONFIG_CC_IS_GCC=y
@@ -894,6 +894,7 @@ CONFIG_VIRTIO_BLK=y
 # CONFIG_PHANTOM is not set
 # CONFIG_TIFM_CORE is not set
 # CONFIG_ENCLOSURE_SERVICES is not set
+# CONFIG_HI6421V600_IRQ is not set
 # CONFIG_HP_ILO is not set
 # CONFIG_SRAM is not set
 # CONFIG_DW_XDATA_PCIE is not set
@@ -1063,6 +1064,7 @@ CONFIG_NET_VENDOR_WANGXUN=y
 # CONFIG_HIPPI is not set
 CONFIG_PHYLIB=y
 CONFIG_SWPHY=y
+# CONFIG_LED_TRIGGER_PHY is not set
 CONFIG_FIXED_PHY=y
 
 #
@@ -1163,6 +1165,7 @@ CONFIG_IVSHMEM_NET=y
 # Input device support
 #
 CONFIG_INPUT=y
+CONFIG_INPUT_LEDS=y
 # CONFIG_INPUT_FF_MEMLESS is not set
 # CONFIG_INPUT_SPARSEKMAP is not set
 # CONFIG_INPUT_MATRIXKMAP is not set
@@ -1295,7 +1298,8 @@ CONFIG_DEVPORT=y
 
 # CONFIG_I3C is not set
 # CONFIG_SPI is not set
-# CONFIG_SPMI is not set
+CONFIG_SPMI=m
+# CONFIG_SPMI_HISI3670 is not set
 # CONFIG_HSI is not set
 # CONFIG_PPS is not set
 
@@ -1335,6 +1339,7 @@ CONFIG_BCMA_POSSIBLE=y
 # CONFIG_MFD_ATMEL_HLCDC is not set
 # CONFIG_MFD_MADERA is not set
 # CONFIG_MFD_HI6421_PMIC is not set
+# CONFIG_MFD_HI6421_SPMI is not set
 # CONFIG_HTC_PASIC3 is not set
 # CONFIG_LPC_ICH is not set
 # CONFIG_LPC_SCH is not set
@@ -1407,7 +1412,60 @@ CONFIG_USB_OHCI_LITTLE_ENDIAN=y
 # CONFIG_USB_SUPPORT is not set
 # CONFIG_MMC is not set
 # CONFIG_MEMSTICK is not set
-# CONFIG_NEW_LEDS is not set
+CONFIG_NEW_LEDS=y
+CONFIG_LEDS_CLASS=y
+# CONFIG_LEDS_CLASS_FLASH is not set
+# CONFIG_LEDS_CLASS_MULTICOLOR is not set
+# CONFIG_LEDS_BRIGHTNESS_HW_CHANGED is not set
+
+#
+# LED drivers
+#
+# CONFIG_LEDS_BCM6328 is not set
+# CONFIG_LEDS_BCM6358 is not set
+
+#
+# LED driver for blink(1) USB RGB LED is under Special HID drivers (HID_THINGM)
+#
+# CONFIG_LEDS_SYSCON is not set
+# CONFIG_LEDS_MLXREG is not set
+# CONFIG_LEDS_USER is not set
+# CONFIG_LEDS_TI_LMU_COMMON is not set
+
+#
+# Flash and Torch LED drivers
+#
+
+#
+# RGB LED drivers
+#
+
+#
+# LED Triggers
+#
+CONFIG_LEDS_TRIGGERS=y
+# CONFIG_LEDS_TRIGGER_TIMER is not set
+# CONFIG_LEDS_TRIGGER_ONESHOT is not set
+# CONFIG_LEDS_TRIGGER_HEARTBEAT is not set
+# CONFIG_LEDS_TRIGGER_BACKLIGHT is not set
+# CONFIG_LEDS_TRIGGER_CPU is not set
+# CONFIG_LEDS_TRIGGER_ACTIVITY is not set
+# CONFIG_LEDS_TRIGGER_DEFAULT_ON is not set
+
+#
+# iptables trigger is under Netfilter config (LED target)
+#
+# CONFIG_LEDS_TRIGGER_TRANSIENT is not set
+# CONFIG_LEDS_TRIGGER_CAMERA is not set
+# CONFIG_LEDS_TRIGGER_PANIC is not set
+# CONFIG_LEDS_TRIGGER_NETDEV is not set
+# CONFIG_LEDS_TRIGGER_PATTERN is not set
+CONFIG_LEDS_TRIGGER_AUDIO=y
+# CONFIG_LEDS_TRIGGER_TTY is not set
+
+#
+# Simple LED drivers
+#
 # CONFIG_ACCESSIBILITY is not set
 # CONFIG_INFINIBAND is not set
 CONFIG_EDAC_SUPPORT=y
