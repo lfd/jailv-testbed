@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2023.02-139-g0c7ba302bd Configuration
+# Buildroot 2023.05-rc1-6-g603df32a0c Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -93,12 +93,14 @@ BR2_TOOLCHAIN_BUILDROOT_LIBC="glibc"
 # BR2_KERNEL_HEADERS_5_4 is not set
 # BR2_KERNEL_HEADERS_5_10 is not set
 # BR2_KERNEL_HEADERS_5_15 is not set
-BR2_KERNEL_HEADERS_6_1=y
+# BR2_KERNEL_HEADERS_6_1 is not set
+# BR2_KERNEL_HEADERS_6_2 is not set
+BR2_KERNEL_HEADERS_6_3=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="6.1.14"
+BR2_DEFAULT_KERNEL_HEADERS="6.3.2"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -226,8 +228,10 @@ BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_18=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_5_19=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_0=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_1=y
+BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_2=y
+BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_3=y
 BR2_TOOLCHAIN_HEADERS_LATEST=y
-BR2_TOOLCHAIN_HEADERS_AT_LEAST="6.1"
+BR2_TOOLCHAIN_HEADERS_AT_LEAST="6.3"
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_3=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_4=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_5=y
@@ -452,7 +456,7 @@ BR2_PACKAGE_FFMPEG_ARCH_SUPPORTS=y
 BR2_PACKAGE_KODI_ARCH_SUPPORTS=y
 
 #
-# kodi needs python3 w/ .py modules, a uClibc or glibc toolchain w/ C++, threads, wchar, dynamic library, gcc >= 4.9
+# kodi needs python3 w/ .py modules, a uClibc or glibc toolchain w/ C++, threads, wchar, dynamic library, gcc >= 9.x
 #
 
 #
@@ -665,6 +669,11 @@ BR2_PACKAGE_PERFTEST_ARCH_SUPPORTS=y
 # BR2_PACKAGE_BSDIFF is not set
 # BR2_PACKAGE_BUSTLE is not set
 # BR2_PACKAGE_CHECK is not set
+BR2_PACKAGE_CMAKE_ARCH_SUPPORTS=y
+
+#
+# ctest needs a toolchain w/ C++, wchar, dynamic library, gcc >= 4.7, NPTL
+#
 
 #
 # cppunit needs a toolchain w/ C++, dynamic library
@@ -1048,6 +1057,10 @@ BR2_PACKAGE_DBUS=y
 # BR2_PACKAGE_DUMP1090 is not set
 # BR2_PACKAGE_DVB_APPS is not set
 # BR2_PACKAGE_DVBSNOOP is not set
+
+#
+# edid-decode needs a toolchain w/ C++, gcc >= 4.7
+#
 BR2_PACKAGE_PROVIDES_UDEV="systemd"
 
 #
@@ -1538,15 +1551,7 @@ BR2_PACKAGE_WOLFSSL_ASM_SUPPORTS=y
 #
 # assimp needs a toolchain w/ C++, wchar
 #
-
-#
-# at-spi2-atk depends on X.org
-#
-
-#
-# at-spi2-core depends on X.org
-#
-# BR2_PACKAGE_ATK is not set
+# BR2_PACKAGE_AT_SPI2_CORE is not set
 
 #
 # atkmm needs a toolchain w/ C++, wchar, threads, gcc >= 7
@@ -1835,7 +1840,7 @@ BR2_PACKAGE_WPEWEBKIT_ARCH_SUPPORTS=y
 # BR2_PACKAGE_TSLIB is not set
 
 #
-# uhd needs a toolchain w/ C++, NPTL, wchar, dynamic library
+# uhd needs a toolchain w/ C++, NPTL, wchar, dynamic library, gcc >= 5
 #
 
 #
@@ -2411,7 +2416,7 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 # BR2_PACKAGE_FFTW is not set
 
 #
-# flann needs a toolchain w/ C++, dynamic library
+# flann needs a toolchain w/ C++, dynamic library, gcc >= 4.7
 #
 
 #
@@ -2539,7 +2544,7 @@ BR2_PACKAGE_LIBNSPR_ARCH_SUPPORT=y
 # BR2_PACKAGE_LIBNSPR is not set
 
 #
-# libosmium needs a toolchain w/ C++,  wchar, threads, gcc >= 4.7
+# libosmium needs a toolchain w/ C++, wchar, threads, gcc >= 4.7
 #
 
 #
@@ -2624,7 +2629,7 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 #
 
 #
-# protozero needs a toolchain w/ C++,  gcc >= 4.7
+# protozero needs a toolchain w/ C++, gcc >= 4.7
 #
 
 #
@@ -2757,10 +2762,6 @@ BR2_PACKAGE_BITCOIN_ARCH_SUPPORTS=y
 
 #
 # bitcoin needs a toolchain w/ C++, threads, wchar
-#
-
-#
-# clamav needs a toolchain w/ C++, dynamic library, threads, wchar
 #
 # BR2_PACKAGE_COLLECTD is not set
 # BR2_PACKAGE_COLLECTL is not set
@@ -3143,7 +3144,10 @@ BR2_PACKAGE_OPENSSH_KEY_UTILS=y
 # BR2_PACKAGE_TINYSSH is not set
 # BR2_PACKAGE_TOR is not set
 # BR2_PACKAGE_TRACEROUTE is not set
-# BR2_PACKAGE_TRANSMISSION is not set
+
+#
+# transmission needs a toolchain w/ dynamic library, threads, C++, gcc >= 7
+#
 # BR2_PACKAGE_TUNCTL is not set
 # BR2_PACKAGE_TVHEADEND is not set
 # BR2_PACKAGE_UACME is not set
@@ -3265,7 +3269,6 @@ BR2_PACKAGE_OPENSSH_KEY_UTILS=y
 #
 # BR2_PACKAGE_CHECKPOLICY is not set
 # BR2_PACKAGE_IMA_EVM_UTILS is not set
-# BR2_PACKAGE_OPTEE_BENCHMARK is not set
 # BR2_PACKAGE_OPTEE_CLIENT is not set
 # BR2_PACKAGE_PAXTEST is not set
 # BR2_PACKAGE_REFPOLICY is not set
@@ -3733,6 +3736,9 @@ BR2_PACKAGE_HOST_SYSTEMD=y
 #
 # Legacy options removed in 2023.05
 #
+# BR2_PACKAGE_ATK is not set
+# BR2_PACKAGE_AT_SPI2_ATK is not set
+# BR2_PACKAGE_OPTEE_BENCHMARK is not set
 # BR2_PACAKGE_OPENFPGALOADER_CMSIS is not set
 
 #
@@ -3768,6 +3774,7 @@ BR2_PACKAGE_QEMU_CUSTOM_TARGETS=""
 #
 # Legacy options removed in 2022.11
 #
+# BR2_BINUTILS_VERSION_2_36_X is not set
 # BR2_PACKAGE_RABBITMQ_SERVER is not set
 # BR2_PACKAGE_LIBOPENSSL_ENABLE_RC5 is not set
 # BR2_PACKAGE_LIBDCADEC is not set
