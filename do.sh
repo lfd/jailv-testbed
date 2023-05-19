@@ -39,7 +39,9 @@ nproc=$(nproc)
 MAKE="make -j $(nproc)"
 
 . setenv
+
 INITRD="$dst_buildroot_root/images/rootfs.cpio.gz"
+#INITRD="$dst_buildroot_non_root/images/rootfs.cpio.gz"
 #INITRD="$dst_initrd/initramfs.cpio"
 
 DTB_QEMU="$dtb/qemu"
@@ -148,7 +150,7 @@ function start_qemu() {
 		-machine $QEMU_MACHINE \
 		-netdev user,id=net,hostfwd=::33333-:22,hostfwd=::33344-:23 \
 		-device e1000e,addr=2.0,netdev=net \
-		-append "mem=510M ip=dhcp earlycon=sbi" \
+		-append "mem=512M ip=dhcp" \
 		-s
 }
 
@@ -285,12 +287,12 @@ elif [[ $cmd == "qemu_aplic_mc" ]]; then
 	#build_initrd
 	start_qemu mc virt
 elif [[ $cmd == "qemu_aplic_imsic_uc" ]]; then
-	QEMU_MACHINE="virt,aia=aplic-imsic,aia-guests=2"
+	QEMU_MACHINE="virt,aia=aplic-imsic,aia-guests=3"
 	build_jailhouse
 	#build_initrd
 	start_qemu uc virt
 elif [[ $cmd == "qemu_aplic_imsic_mc" ]]; then
-	QEMU_MACHINE="virt,aia=aplic-imsic,aia-guests=2"
+	QEMU_MACHINE="virt,aia=aplic-imsic,aia-guests=3"
 	build_jailhouse
 	#build_initrd
 	start_qemu mc virt
