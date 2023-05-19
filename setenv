@@ -5,8 +5,8 @@ export CROSS_COMPILE=riscv64-linux-gnu-
 export PATH="$PATH:$PWD/build/toolchain/bin"
 
 # Works with upstream Qemu 7.2.0
-#export QEMU="qemu-system-riscv64"
-export QEMU="$PWD/build/qemu/qemu-system-riscv64"
+export QEMU="qemu-system-riscv64"
+#export QEMU="$PWD/build/qemu/qemu-system-riscv64"
 
 export KERNEL="$PWD/build/linux/arch/riscv/boot/Image"
 export VMLINUX="$PWD/build/linux/vmlinux"
