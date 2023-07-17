@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2023.05-rc1-6-g603df32a0c Configuration
+# Buildroot 2023.05-420-g6c8abbf72f Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -94,13 +94,13 @@ BR2_TOOLCHAIN_BUILDROOT_LIBC="glibc"
 # BR2_KERNEL_HEADERS_5_10 is not set
 # BR2_KERNEL_HEADERS_5_15 is not set
 # BR2_KERNEL_HEADERS_6_1 is not set
-# BR2_KERNEL_HEADERS_6_2 is not set
-BR2_KERNEL_HEADERS_6_3=y
+# BR2_KERNEL_HEADERS_6_3 is not set
+BR2_KERNEL_HEADERS_6_4=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="6.3.2"
+BR2_DEFAULT_KERNEL_HEADERS="6.4.3"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -120,10 +120,10 @@ BR2_PACKAGE_GLIBC=y
 # Binutils Options
 #
 BR2_PACKAGE_HOST_BINUTILS_SUPPORTS_CFI=y
-# BR2_BINUTILS_VERSION_2_37_X is not set
 # BR2_BINUTILS_VERSION_2_38_X is not set
-BR2_BINUTILS_VERSION_2_39_X=y
-BR2_BINUTILS_VERSION="2.39"
+# BR2_BINUTILS_VERSION_2_39_X is not set
+BR2_BINUTILS_VERSION_2_40_X=y
+BR2_BINUTILS_VERSION="2.40"
 # BR2_BINUTILS_GPROFNG is not set
 BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 
@@ -133,7 +133,7 @@ BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 # BR2_GCC_VERSION_10_X is not set
 # BR2_GCC_VERSION_11_X is not set
 BR2_GCC_VERSION_12_X=y
-BR2_GCC_VERSION="12.2.0"
+BR2_GCC_VERSION="12.3.0"
 BR2_EXTRA_GCC_CONFIG_OPTIONS=""
 # BR2_TOOLCHAIN_BUILDROOT_CXX is not set
 # BR2_TOOLCHAIN_BUILDROOT_FORTRAN is not set
@@ -230,8 +230,9 @@ BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_0=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_1=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_2=y
 BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_3=y
+BR2_TOOLCHAIN_HEADERS_AT_LEAST_6_4=y
 BR2_TOOLCHAIN_HEADERS_LATEST=y
-BR2_TOOLCHAIN_HEADERS_AT_LEAST="6.3"
+BR2_TOOLCHAIN_HEADERS_AT_LEAST="6.4"
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_3=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_4=y
 BR2_TOOLCHAIN_GCC_AT_LEAST_4_5=y
@@ -504,10 +505,6 @@ BR2_PACKAGE_PULSEAUDIO_HAS_ATOMIC=y
 # BR2_PACKAGE_SPEECHD is not set
 # BR2_PACKAGE_SQUEEZELITE is not set
 # BR2_PACKAGE_TINYCOMPRESS is not set
-
-#
-# tovid needs a toolchain w/ NPTL, C++, wchar, gcc >= 4.9
-#
 # BR2_PACKAGE_TSTOOLS is not set
 # BR2_PACKAGE_TWOLAME is not set
 # BR2_PACKAGE_UDPXY is not set
@@ -935,7 +932,7 @@ BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 #
 
 #
-# mesa3d needs a toolchain w/ C++, NPTL, dynamic library
+# mesa3d needs a toolchain w/ gcc >=8, C++, NPTL, dynamic library
 #
 
 #
@@ -1046,6 +1043,7 @@ BR2_PACKAGE_DBUS=y
 #
 # BR2_PACKAGE_DBUS_GLIB is not set
 # BR2_PACKAGE_DBUS_TRIGGERD is not set
+# BR2_PACKAGE_DFU_PROGRAMMER is not set
 # BR2_PACKAGE_DFU_UTIL is not set
 # BR2_PACKAGE_DMRAID is not set
 # BR2_PACKAGE_DT_UTILS is not set
@@ -1201,6 +1199,10 @@ BR2_PACKAGE_FLASHROM_ARCH_SUPPORTS=y
 #
 # rtl8821cu needs a Linux kernel to be built
 #
+
+#
+# rl8822cs needs a Linux kernel to be built
+#
 # BR2_PACKAGE_SANE_BACKENDS is not set
 # BR2_PACKAGE_SDPARM is not set
 # BR2_PACKAGE_SETSERIAL is not set
@@ -1303,10 +1305,6 @@ BR2_PACKAGE_PHP_ARCH_SUPPORTS=y
 # caps needs a toolchain w/ C++, dynamic library
 #
 # BR2_PACKAGE_LIBAO is not set
-
-#
-# asplib needs a toolchain w/ C++
-#
 # BR2_PACKAGE_LIBBROADVOICE is not set
 # BR2_PACKAGE_LIBCDAUDIO is not set
 # BR2_PACKAGE_LIBCDDB is not set
@@ -1416,7 +1414,7 @@ BR2_PACKAGE_BOTAN_ARCH_SUPPORTS=y
 # BR2_PACKAGE_CA_CERTIFICATES is not set
 
 #
-# cryptodev needs a Linux kernel to be built
+# cryptodev-linux needs a Linux kernel to be built
 #
 
 #
@@ -1523,6 +1521,10 @@ BR2_PACKAGE_WOLFSSL_ASM_SUPPORTS=y
 #
 # BR2_PACKAGE_POSTGRESQL is not set
 # BR2_PACKAGE_REDIS is not set
+
+#
+# redis-plus-plus needs a toolchain w/ C++
+#
 # BR2_PACKAGE_SQLCIPHER is not set
 # BR2_PACKAGE_SQLITE is not set
 # BR2_PACKAGE_UNIXODBC is not set
@@ -1549,7 +1551,7 @@ BR2_PACKAGE_WOLFSSL_ASM_SUPPORTS=y
 #
 
 #
-# assimp needs a toolchain w/ C++, wchar
+# assimp needs a toolchain w/ C++, wchar, gcc >= 7
 #
 # BR2_PACKAGE_AT_SPI2_CORE is not set
 
@@ -1790,6 +1792,7 @@ BR2_PACKAGE_WPEWEBKIT_ARCH_SUPPORTS=y
 #
 # libcec needs a toolchain w/ C++, wchar, threads, dynamic library, gcc >= 4.7
 #
+# BR2_PACKAGE_LIBDISPLAY_INFO is not set
 # BR2_PACKAGE_LIBFREEFARE is not set
 # BR2_PACKAGE_LIBFTDI is not set
 # BR2_PACKAGE_LIBFTDI1 is not set
@@ -2491,7 +2494,7 @@ BR2_PACKAGE_LIBCAP=y
 # BR2_PACKAGE_LIBCAP_NG is not set
 
 #
-# libcgroup needs a glibc toolchain w/ C++
+# libcgroup needs a toolchain w/ C++
 #
 # BR2_PACKAGE_LIBCLC is not set
 # BR2_PACKAGE_LIBCORRECT is not set
@@ -3102,6 +3105,10 @@ BR2_PACKAGE_OPENSSH_KEY_UTILS=y
 # rtorrent needs a toolchain w/ C++, threads, wchar, gcc >= 4.9
 #
 # BR2_PACKAGE_RTPTOOLS is not set
+
+#
+# rygel needs python3 and a glibc toolchain w/ wchar, threads, gcc >= 4.9, host gcc >= 8
+#
 # BR2_PACKAGE_S6_DNS is not set
 # BR2_PACKAGE_S6_NETWORKING is not set
 # BR2_PACKAGE_SAMBA4 is not set
@@ -3635,6 +3642,7 @@ BR2_TARGET_ROOTFS_CPIO_GZIP=y
 # BR2_PACKAGE_HOST_CHECKPOLICY is not set
 # BR2_PACKAGE_HOST_CHECKSEC is not set
 # BR2_PACKAGE_HOST_CMAKE is not set
+BR2_HOST_CMAKE_AT_LEAST="3.18"
 # BR2_PACKAGE_HOST_CRAMFS is not set
 # BR2_PACKAGE_HOST_CRUDINI is not set
 # BR2_PACKAGE_HOST_CRYPTSETUP is not set
@@ -3734,8 +3742,17 @@ BR2_PACKAGE_HOST_SYSTEMD=y
 #
 
 #
+# Legacy options removed in 2023.08
+#
+# BR2_PACKAGE_TOVID is not set
+# BR2_PACKAGE_LIBASPLIB is not set
+# BR2_PACKAGE_OCF_LINUX is not set
+# BR2_BINUTILS_VERSION_2_37_X is not set
+
+#
 # Legacy options removed in 2023.05
 #
+# BR2_KERNEL_HEADERS_6_2 is not set
 # BR2_PACKAGE_ATK is not set
 # BR2_PACKAGE_AT_SPI2_ATK is not set
 # BR2_PACKAGE_OPTEE_BENCHMARK is not set
