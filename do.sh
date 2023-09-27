@@ -42,7 +42,7 @@ MAKE="make -j $(nproc)"
 
 INITRD="$dst_buildroot_root/images/rootfs.cpio.gz"
 #INITRD="$dst_buildroot_non_root/images/rootfs.cpio.gz"
-#INITRD="$dst_initrd/initramfs.cpio"
+#INITRD="$dst_initrd/initramfs.cpio.gz"
 
 DTB_QEMU="$dtb/qemu"
 
@@ -177,6 +177,7 @@ function build_initrd() {
 	cp -av $res/scripts/* ./usr/bin/
 
 	find . | cpio -o -H newc > $dst_f_initrd
+	pigz -f $dst_f_initrd
 }
 
 function build_linux() {
