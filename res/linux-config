@@ -2018,9 +2018,7 @@ CONFIG_RESET_SIMPLE=y
 #
 # Performance monitor support
 #
-CONFIG_RISCV_PMU=y
-CONFIG_RISCV_PMU_LEGACY=y
-CONFIG_RISCV_PMU_SBI=y
+# CONFIG_RISCV_PMU is not set
 # end of Performance monitor support
 
 # CONFIG_RAS is not set
