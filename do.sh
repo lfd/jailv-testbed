@@ -219,8 +219,7 @@ function deploy() {
 		$dtb/noel-*.dtb \
 		$KERNEL \
 		$VMLINUX \
-		$dst_opensbi/platform/generic/firmware/fw_payload.elf \
-		build/initrd/initramfs.cpio \
+		build/initrd/initramfs.cpio.gz \
 		$dst_buildroot_root/images/rootfs.cpio.gz \
 		$jailhouse/driver/jailhouse.ko \
 		$jailhouse/hypervisor/hypervisor.o \
