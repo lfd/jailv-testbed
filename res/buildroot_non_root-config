@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2023.11-rc1-27-gfbf0a6ea42 Configuration
+# Buildroot 2023.11-141-gb79fb3c224 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -108,7 +108,7 @@ BR2_KERNEL_HEADERS_6_6=y
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="6.6.1"
+BR2_DEFAULT_KERNEL_HEADERS="6.6.3"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -651,7 +651,7 @@ BR2_PACKAGE_PERFTEST_ARCH_SUPPORTS=y
 # BR2_PACKAGE_PERFTEST is not set
 
 #
-# piglit needs a glibc or musl toolchain w/ C++
+# piglit needs a glibc or musl toolchain w/ C++, gcc >= 9, host gcc >= 9
 #
 # BR2_PACKAGE_POKE is not set
 # BR2_PACKAGE_PV is not set
@@ -672,7 +672,7 @@ BR2_PACKAGE_PERFTEST_ARCH_SUPPORTS=y
 # BR2_PACKAGE_STRESS_NG is not set
 
 #
-# sysdig needs a glibc toolchain w/ C++, threads, gcc >= 5, dynamic library, a Linux kernel, and luajit or lua 5.1 to be built
+# sysdig needs a glibc toolchain w/ C++, threads, gcc >= 8, dynamic library, a Linux kernel, and luajit or lua 5.1 to be built
 #
 # BR2_PACKAGE_TINYMEMBENCH is not set
 # BR2_PACKAGE_TRACE_CMD is not set
@@ -2209,7 +2209,7 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GLIB_NETWORKING is not set
 
 #
-# grpc needs a toolchain w/ C++, threads, dynamic library, gcc >= 5
+# grpc needs a toolchain w/ C++, threads, dynamic library, gcc >= 8
 #
 # BR2_PACKAGE_GSSDP is not set
 # BR2_PACKAGE_GUPNP is not set
@@ -2573,7 +2573,7 @@ BR2_PACKAGE_LAPACK_ARCH_SUPPORTS=y
 BR2_PACKAGE_LIBABSEIL_CPP_ARCH_SUPPORTS=y
 
 #
-# libabseil-cpp needs a toolchain w/ gcc >= 4.9, C++, threads, dynamic library
+# libabseil-cpp needs a toolchain w/ gcc >= 8, C++, threads, dynamic library
 #
 # BR2_PACKAGE_LIBARGTABLE2 is not set
 BR2_PACKAGE_LIBATOMIC_OPS_ARCH_SUPPORTS=y
@@ -2841,7 +2841,7 @@ BR2_PACKAGE_NCURSES_ADDITIONAL_TERMINFO=""
 # BR2_PACKAGE_POPT is not set
 
 #
-# re2 needs a toolchain w/ C++, threads, gcc >= 4.8
+# re2 needs a toolchain w/ C++, threads, gcc >= 8
 #
 BR2_PACKAGE_READLINE=y
 # BR2_PACKAGE_READLINE_BRACKETED_PASTE is not set
