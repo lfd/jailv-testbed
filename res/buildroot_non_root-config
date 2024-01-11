@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2023.11-141-gb79fb3c224 Configuration
+# Buildroot 2023.11-573-g66414ed526 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -102,13 +102,12 @@ BR2_TOOLCHAIN_BUILDROOT_LIBC="glibc"
 # BR2_KERNEL_HEADERS_5_10 is not set
 # BR2_KERNEL_HEADERS_5_15 is not set
 # BR2_KERNEL_HEADERS_6_1 is not set
-# BR2_KERNEL_HEADERS_6_5 is not set
 BR2_KERNEL_HEADERS_6_6=y
 # BR2_KERNEL_HEADERS_VERSION is not set
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="6.6.3"
+BR2_DEFAULT_KERNEL_HEADERS="6.6.10"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -331,10 +330,7 @@ BR2_GLOBAL_PATCH_DIR=""
 # Advanced
 #
 # BR2_FORCE_HOST_BUILD is not set
-
-#
-# Forcing all downloads to have a valid hash needs a global patch and hash directory
-#
+# BR2_DOWNLOAD_FORCE_CHECK_HASHES is not set
 # BR2_REPRODUCIBLE is not set
 # BR2_PER_PACKAGE_DIRECTORIES is not set
 
@@ -624,6 +620,8 @@ BR2_PACKAGE_GDB_ARCH_SUPPORTS=y
 # BR2_PACKAGE_KMEMD is not set
 # BR2_PACKAGE_LATENCYTOP is not set
 # BR2_PACKAGE_LIBBPF is not set
+# BR2_PACKAGE_LIBTRACEEVENT is not set
+# BR2_PACKAGE_LIBTRACEFS is not set
 # BR2_PACKAGE_LMBENCH is not set
 # BR2_PACKAGE_LSOF is not set
 BR2_PACKAGE_LTP_TESTSUITE_ARCH_SUPPORTS=y
@@ -873,6 +871,23 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 #
 # cog needs wpewebkit and a toolchain w/ threads
 #
+
+#
+# dmenu-wayland needs a toolchain w/ wchar, threads, C++, dynamic library, gcc >= 4.9
+#
+
+#
+# flutter-gallery needs flutter-engine
+#
+
+#
+# flutter-pi needs flutter-engine
+#
+
+#
+# flutter-pi needs GBM, systemd, and udev
+#
+# BR2_PACKAGE_FOOT is not set
 # BR2_PACKAGE_FSWEBCAM is not set
 # BR2_PACKAGE_GHOSTSCRIPT is not set
 
@@ -953,18 +968,6 @@ BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 # fbterm needs a toolchain w/ C++, wchar, locale
 #
 # BR2_PACKAGE_FBV is not set
-
-#
-# flutter-gallery needs flutter-engine
-#
-
-#
-# flutter-pi needs flutter-engine
-#
-
-#
-# flutter-pi needs GBM, systemd, and udev
-#
 
 #
 # freerdp needs a toolchain w/ wchar, dynamic library, threads, C++
@@ -1391,7 +1394,6 @@ BR2_PACKAGE_PHP_ARCH_SUPPORTS=y
 #
 # libmodplug needs a toolchain w/ C++
 #
-# BR2_PACKAGE_LIBMPD is not set
 # BR2_PACKAGE_LIBMPDCLIENT is not set
 # BR2_PACKAGE_LIBREPLAYGAIN is not set
 # BR2_PACKAGE_LIBSAMPLERATE is not set
@@ -1520,7 +1522,7 @@ BR2_PACKAGE_LIBGPG_ERROR_SYSCFG="riscv64-unknown-linux-gnu"
 # BR2_PACKAGE_NETTLE is not set
 BR2_PACKAGE_OPENSSL=y
 BR2_PACKAGE_LIBOPENSSL=y
-BR2_PACKAGE_LIBOPENSSL_TARGET_ARCH="linux-generic64 no-asm"
+BR2_PACKAGE_LIBOPENSSL_TARGET_ARCH="linux64-riscv64"
 # BR2_PACKAGE_LIBOPENSSL_BIN is not set
 # BR2_PACKAGE_LIBOPENSSL_ENGINES is not set
 BR2_PACKAGE_LIBOPENSSL_ENABLE_CHACHA=y
@@ -1771,20 +1773,16 @@ BR2_PACKAGE_WOLFSSL_ASM_SUPPORTS=y
 #
 # libvips needs a toolchain w/ wchar, threads, C++
 #
+BR2_PACKAGE_LIBVPL_ARCH_SUPPORTS=y
+
+#
+# libvpl needs a toolchain w/ dynamic library, gcc >= 7, C++, threads
+#
 
 #
 # libwpe needs a toolchain w/ C++, dynamic library and an OpenEGL-capable backend
 #
 # BR2_PACKAGE_MENU_CACHE is not set
-BR2_PACKAGE_ONEVPL_ARCH_SUPPORTS=y
-
-#
-# onevpl needs a toolchain w/ dynamic library, gcc >= 7, C++, threads
-#
-
-#
-# onevpl-intel-gpu needs a toolchain w/ dynamic library, gcc >= 7, C++, NPTL
-#
 
 #
 # opencv3 needs a toolchain w/ C++, NPTL, wchar, dynamic library
@@ -2202,7 +2200,6 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 #
 # filemq needs a toolchain w/ C++, threads
 #
-# BR2_PACKAGE_FLICKCURL is not set
 # BR2_PACKAGE_FREERADIUS_CLIENT is not set
 # BR2_PACKAGE_GENSIO is not set
 # BR2_PACKAGE_GEOIP is not set
@@ -2243,7 +2240,7 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 # BR2_PACKAGE_LIBHTTPPARSER is not set
 
 #
-# libhttpserver needs a toolchain w/ C++, threads, gcc >= 5
+# libhttpserver needs a toolchain w/ C++, threads, gcc >= 7
 #
 # BR2_PACKAGE_LIBIDN is not set
 # BR2_PACKAGE_LIBIDN2 is not set
@@ -2589,7 +2586,7 @@ BR2_PACKAGE_LIBCAP=y
 # BR2_PACKAGE_LIBCAP_NG is not set
 
 #
-# libcgroup needs a toolchain w/ C++
+# libcgroup needs a toolchain w/ C++, threads
 #
 # BR2_PACKAGE_LIBCLC is not set
 # BR2_PACKAGE_LIBCORRECT is not set
@@ -2690,6 +2687,7 @@ BR2_PACKAGE_LIBURCU_ARCH_SUPPORTS=y
 # liburcu needs a toolchain w/ threads, C++
 #
 # BR2_PACKAGE_LIBURING is not set
+# BR2_PACKAGE_LIBUTEMPTER is not set
 # BR2_PACKAGE_LIBUV is not set
 # BR2_PACKAGE_LIGHTNING is not set
 BR2_PACKAGE_LINUX_PAM=y
@@ -2770,6 +2768,7 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 #
 # tl-expected needs a toolchain w/ C++, gcc >= 4.8
 #
+# BR2_PACKAGE_TLLIST is not set
 BR2_PACKAGE_TZDATA=y
 
 #
@@ -2812,6 +2811,7 @@ BR2_PACKAGE_TZDATA=y
 #
 # enchant needs a toolchain w/ C++, threads, wchar
 #
+# BR2_PACKAGE_FCFT is not set
 
 #
 # fmt needs a toolchain w/ C++, wchar
@@ -3493,6 +3493,9 @@ BR2_PACKAGE_GNUPG2_DEPENDS=y
 #
 # BR2_PACKAGE_DOCKER_ENGINE is not set
 # BR2_PACKAGE_EARLYOOM is not set
+# BR2_PACKAGE_EFIBOOTMGR is not set
+BR2_PACKAGE_EFIVAR_ARCH_SUPPORTS=y
+# BR2_PACKAGE_EFIVAR is not set
 # BR2_PACKAGE_EMBIGGEN_DISK is not set
 
 #
@@ -3751,6 +3754,10 @@ BR2_TARGET_ROOTFS_CPIO_GZIP=y
 # BR2_TARGET_BAREBOX is not set
 # BR2_TARGET_BEAGLEV_DDRINIT is not set
 # BR2_TARGET_BEAGLEV_SECONDBOOT is not set
+BR2_TARGET_EDK2_ARCH_SUPPORTS=y
+# BR2_TARGET_EDK2 is not set
+BR2_TARGET_GRUB2_ARCH_SUPPORTS=y
+# BR2_TARGET_GRUB2 is not set
 # BR2_TARGET_OPENSBI is not set
 # BR2_TARGET_UBOOT is not set
 
@@ -3880,6 +3887,16 @@ BR2_PACKAGE_HOST_SYSTEMD=y
 #
 # Legacy config options
 #
+
+#
+# Legacy options removed in 2024.02
+#
+# BR2_GDB_VERSION_11 is not set
+# BR2_PACKAGE_LIBMPD is not set
+# BR2_PACKAGE_GMPC is not set
+# BR2_PACKAGE_FLICKCURL is not set
+# BR2_PACKAGE_ONEVPL is not set
+# BR2_KERNEL_HEADERS_6_5 is not set
 
 #
 # Legacy options removed in 2023.11
