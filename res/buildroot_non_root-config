@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2023.11-573-g66414ed526 Configuration
+# Buildroot 2023.11-1177-g6c455505eb Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -107,7 +107,7 @@ BR2_KERNEL_HEADERS_6_6=y
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="6.6.10"
+BR2_DEFAULT_KERNEL_HEADERS="6.6.16"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -267,6 +267,11 @@ BR2_TOOLCHAIN_HAS_SYNC_4=y
 BR2_TOOLCHAIN_HAS_SYNC_8=y
 BR2_TOOLCHAIN_HAS_LIBATOMIC=y
 BR2_TOOLCHAIN_HAS_ATOMIC=y
+
+#
+# Bare metal toolchain
+#
+# BR2_TOOLCHAIN_BARE_METAL_BUILDROOT is not set
 
 #
 # Build options
@@ -672,7 +677,6 @@ BR2_PACKAGE_PERFTEST_ARCH_SUPPORTS=y
 #
 # sysdig needs a glibc toolchain w/ C++, threads, gcc >= 8, dynamic library, a Linux kernel, and luajit or lua 5.1 to be built
 #
-# BR2_PACKAGE_TINYMEMBENCH is not set
 # BR2_PACKAGE_TRACE_CMD is not set
 # BR2_PACKAGE_UCLIBC_NG_TEST is not set
 # BR2_PACKAGE_VMTOUCH is not set
@@ -878,10 +882,6 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 
 #
 # flutter-gallery needs flutter-engine
-#
-
-#
-# flutter-pi needs flutter-engine
 #
 
 #
@@ -1296,6 +1296,7 @@ BR2_PACKAGE_KBD=y
 # BR2_PACKAGE_TI_UTILS is not set
 # BR2_PACKAGE_TIO is not set
 # BR2_PACKAGE_TRIGGERHAPPY is not set
+# BR2_PACKAGE_UBOOT_BOOTCOUNT is not set
 # BR2_PACKAGE_UBOOT_TOOLS is not set
 # BR2_PACKAGE_UBUS is not set
 BR2_PACKAGE_HAS_UDEV=y
@@ -1815,7 +1816,7 @@ BR2_PACKAGE_LIBVPL_ARCH_SUPPORTS=y
 BR2_PACKAGE_WEBKITGTK_ARCH_SUPPORTS=y
 
 #
-# webkitgtk needs libgtk3 and a toolchain w/ C++, wchar, threads, dynamic library, gcc >= 9, host gcc >= 4.9
+# webkitgtk needs libgtk3 and a toolchain w/ C++, wchar, threads, dynamic library, gcc >= 10, host gcc >= 4.9
 #
 # BR2_PACKAGE_WEBP is not set
 
@@ -1833,7 +1834,7 @@ BR2_PACKAGE_WEBKITGTK_ARCH_SUPPORTS=y
 BR2_PACKAGE_WPEWEBKIT_ARCH_SUPPORTS=y
 
 #
-# wpewebkit needs a toolchain w/ C++, wchar, threads, dynamic library, gcc >= 9, host gcc >= 4.9
+# wpewebkit needs a toolchain w/ C++, wchar, threads, dynamic library, gcc >= 10, host gcc >= 4.9
 #
 
 #
@@ -1980,6 +1981,7 @@ BR2_PACKAGE_EXPAT=y
 #
 # libjson needs a toolchain w/ C++
 #
+# BR2_PACKAGE_LIBJWT is not set
 # BR2_PACKAGE_LIBROXML is not set
 # BR2_PACKAGE_LIBUCL is not set
 # BR2_PACKAGE_LIBXML2 is not set
@@ -2737,7 +2739,7 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 #
 
 #
-# protobuf-c needs a toolchain w/ C++, threads
+# protobuf-c needs a toolchain w/ C++, threads, host gcc >= 7
 #
 
 #
@@ -2751,7 +2753,7 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 # BR2_PACKAGE_REPROC is not set
 
 #
-# riemann-c-client needs a toolchain w/ C++, threads
+# riemann-c-client needs a toolchain w/ C++, threads, host gcc >= 7
 #
 
 #
@@ -2841,7 +2843,7 @@ BR2_PACKAGE_NCURSES_ADDITIONAL_TERMINFO=""
 # BR2_PACKAGE_POPT is not set
 
 #
-# re2 needs a toolchain w/ C++, threads, gcc >= 8
+# re2 needs a toolchain w/ C++, threads, dynamic library, gcc >= 8
 #
 BR2_PACKAGE_READLINE=y
 # BR2_PACKAGE_READLINE_BRACKETED_PASTE is not set
@@ -3096,7 +3098,7 @@ BR2_PACKAGE_HAPROXY_ARCH_SUPPORTS=y
 # BR2_PACKAGE_KEEPALIVED is not set
 
 #
-# kismet needs a toolchain w/ threads, C++, gcc >= 5
+# kismet needs a toolchain w/ threads, C++, gcc >= 5, host gcc >= 7
 #
 # BR2_PACKAGE_KNOCK is not set
 # BR2_PACKAGE_KSMBD_TOOLS is not set
@@ -3222,10 +3224,6 @@ BR2_PACKAGE_OPENSSH_KEY_UTILS=y
 # rtorrent needs a toolchain w/ C++, threads, wchar, gcc >= 4.9
 #
 # BR2_PACKAGE_RTPTOOLS is not set
-
-#
-# rygel needs python3 and a glibc toolchain w/ wchar, threads, gcc >= 4.9, host gcc >= 8
-#
 # BR2_PACKAGE_S6_DNS is not set
 # BR2_PACKAGE_S6_NETWORKING is not set
 # BR2_PACKAGE_SAMBA4 is not set
@@ -3439,11 +3437,13 @@ BR2_PACKAGE_GNUPG2_DEPENDS=y
 # BR2_PACKAGE_LOCKFILE_PROGS is not set
 # BR2_PACKAGE_LOGROTATE is not set
 # BR2_PACKAGE_LOGSURFER is not set
+# BR2_PACKAGE_MINISIGN is not set
 # BR2_PACKAGE_NEOFETCH is not set
 # BR2_PACKAGE_PDMENU is not set
 # BR2_PACKAGE_PINENTRY is not set
 # BR2_PACKAGE_QPRINT is not set
 # BR2_PACKAGE_RANGER is not set
+# BR2_PACKAGE_RLWRAP is not set
 # BR2_PACKAGE_RTTY is not set
 # BR2_PACKAGE_SCREEN is not set
 # BR2_PACKAGE_SCREENFETCH is not set
@@ -3827,6 +3827,7 @@ BR2_PACKAGE_HOST_GOOGLE_BREAKPAD_ARCH_SUPPORTS=y
 # BR2_PACKAGE_HOST_MENDER_ARTIFACT is not set
 # BR2_PACKAGE_HOST_MESON_TOOLS is not set
 # BR2_PACKAGE_HOST_MICROCHIP_HSS_PAYLOAD_GENERATOR is not set
+# BR2_PACKAGE_HOST_MINISIGN is not set
 # BR2_PACKAGE_HOST_MKPASSWD is not set
 # BR2_PACKAGE_HOST_MOBY_BUILDKIT is not set
 # BR2_PACKAGE_HOST_MOSQUITTO is not set
@@ -3891,12 +3892,21 @@ BR2_PACKAGE_HOST_SYSTEMD=y
 #
 # Legacy options removed in 2024.02
 #
+# BR2_PACKAGE_TINYMEMBENCH is not set
+# BR2_PACKAGE_DAVINCI_BOOTCOUNT is not set
+# BR2_PACKAGE_PYTHON_CROSSBAR is not set
+# BR2_PACKAGE_PYTHON_PYGAME is not set
+# BR2_KERNEL_HEADERS_4_14 is not set
 # BR2_GDB_VERSION_11 is not set
 # BR2_PACKAGE_LIBMPD is not set
 # BR2_PACKAGE_GMPC is not set
 # BR2_PACKAGE_FLICKCURL is not set
 # BR2_PACKAGE_ONEVPL is not set
 # BR2_KERNEL_HEADERS_6_5 is not set
+BR2_PACKAGE_WATCHDOGD_GENERIC_POLL=0
+BR2_PACKAGE_WATCHDOGD_LOADAVG_POLL=0
+BR2_PACKAGE_WATCHDOGD_FILENR_POLL=0
+BR2_PACKAGE_WATCHDOGD_MEMINFO_POLL=0
 
 #
 # Legacy options removed in 2023.11
