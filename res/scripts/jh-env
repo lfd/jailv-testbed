@@ -29,6 +29,8 @@ if [ $SYS == "riscv-virtio" ]; then
 	LINUX_DTB=$ETC_JH/qemu-linux-inmate-${PLIC}${IMSIC}.dtb
 	TINY_CELL=$ETC_JH/qemu-inmate-demo.cell
 	TINY_INMATE=$ETC_JH/timer-demo.bin
+elif [ $SYS == "freechips,lfd-rocket" ]; then
+	SYS="rocket"
 else
 	SYS="noelv"
 	LINUX_CELL=$ETC_JH/noelv-linux-demo.cell
