@@ -223,7 +223,7 @@ function deploy() {
 		$dst_buildroot_root/images/rootfs.cpio.gz \
 		$jailhouse/driver/jailhouse.ko \
 		$jailhouse/hypervisor/hypervisor.o \
-		$target:
+		$target:jailv/
 }
 
 function deploy_target() {
