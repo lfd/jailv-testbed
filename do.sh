@@ -150,7 +150,7 @@ function start_qemu() {
 		-machine $QEMU_MACHINE \
 		-netdev user,id=net,hostfwd=::33333-:22,hostfwd=::33344-:23 \
 		-device e1000e,addr=2.0,netdev=net \
-		-append "mem=548M ip=dhcp" \
+		-append "mem=768M ip=dhcp" \
 		-s
 }
 
