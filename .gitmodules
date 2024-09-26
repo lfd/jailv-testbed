@@ -13,6 +13,3 @@
 [submodule "srcs/buildroot"]
 	path = srcs/buildroot
 	url = git://git.buildroot.net/buildroot
-[submodule "srcs/qemu"]
-	path = srcs/qemu
-	url = git@github.com:lfd/qemu.git
