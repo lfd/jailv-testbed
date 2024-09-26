@@ -158,6 +158,7 @@ function build_initrd() {
 	cd $dst_rootfs
 
 	mkdir -p root
+	# comment out to save space (rocket)
 	cp -av $KERNEL ./root/
 	cp -av ../../buildroot_non_root/images/rootfs.cpio.gz ./root/
 
