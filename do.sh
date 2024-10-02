@@ -221,6 +221,7 @@ function deploy() {
 	rsync -avz -e ssh \
 		$dtb/noel-*.dtb \
 		$KERNEL \
+		${KERNEL}.gz \
 		$VMLINUX \
 		build/initrd/initramfs.cpio.gz \
 		$dst_buildroot_root/images/rootfs.cpio.gz \
