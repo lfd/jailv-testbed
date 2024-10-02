@@ -81,12 +81,15 @@ function prepare_root_overlay() {
 		 $buildroot_root_overlay/usr/lib/firmware/ \
 		 $buildroot_root_overlay/etc/systemd/network/
 	tar -xvf res/ssh.tar -C $buildroot_root_overlay/
+
+	# comment out for more space
 	cp -v build/buildroot_non_root/images/rootfs.cpio.gz $buildroot_root_overlay/root/
+	cp -v $KERNEL $buildroot_root_overlay/root/
+
 	cp -v res/authorized_keys $buildroot_root_overlay/root/.ssh/
 	cp -v res/bash_history $buildroot_root_overlay/root/.bash_history
 	cp -v res/bashrc $buildroot_root_overlay/root/.bashrc
 	echo bash > $buildroot_root_overlay/root/.bash_login
-	cp -v $KERNEL $buildroot_root_overlay/root/
 
 	cp -av $jailhouse/driver/jailhouse.ko $buildroot_root_overlay/root/
 	cp -av $jailhouse/hypervisor/jailhouse.bin $buildroot_root_overlay/usr/lib/firmware
@@ -197,9 +200,8 @@ function build_opensbi() {
 
 function prepare_linux() {
 	mkdir -p $dst_linux
-	cp res/linux-config $dst_linux/.config
 	cd $dst_linux
-	$MAKE -C $linux O=$dst_linux oldconfig
+	$MAKE -C $linux O=$dst_linux lfd_riscv64_defconfig oldconfig
 }
 
 function build_qemu() {
