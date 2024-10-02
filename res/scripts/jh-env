@@ -12,29 +12,28 @@ ETC_JH=/etc/jailhouse
 NONROOT_INITRD=/root/rootfs.cpio.gz
 
 PLIC="plic"
-if [ -d /proc/device-tree/soc/interrupt-controller@c000000/ ]; then
-	PLIC="aplic"
-fi
-
 IMSIC=""
-if [ -d /proc/device-tree/soc/interrupt-controller@28000000/ ]; then
-	IMSIC="-imsic"
-fi
 
 # Check whether we're on the NOEL-V target, or in a QEMU VM
 SYS=$(cat /proc/device-tree/compatible)
 if [ $SYS == "riscv-virtio" ]; then
+	if [ -d /proc/device-tree/soc/interrupt-controller@c000000/ ]; then
+		PLIC="aplic"
+	fi
+	if [ -d /proc/device-tree/soc/interrupt-controller@28000000/ ]; then
+		IMSIC="-imsic"
+	fi
+
 	SYS="qemu"
 	LINUX_CELL=$ETC_JH/qemu-linux-demo-${PLIC}${IMSIC}.cell
 	LINUX_DTB=$ETC_JH/qemu-linux-inmate-${PLIC}${IMSIC}.dtb
 	TINY_CELL=$ETC_JH/qemu-inmate-demo.cell
 	TINY_INMATE=$ETC_JH/timer-demo.bin
-elif [ $SYS == "freechips,lfd-rocket" ]; then
-	SYS="rocket"
+elif [ $SYS == "lfd,vcu118-rocket" ]; then
+	SYS="vcu118-rocket"
 else
-	SYS="noelv"
-	LINUX_CELL=$ETC_JH/noelv-linux-demo.cell
-	LINUX_DTB=$ETC_JH/noelv-linux-inmate.dtb
+	echo "Unknown platform"
+	exit 1
 fi
 
 CONFIG=$ETC_JH/$SYS

@@ -118,19 +118,8 @@ function buildroot() {
 	make
 }
 
-function compile_dts() {
-	cat $dts/noel-template.dts > $dts/noel-uc-noeth.dts
-	cat $dts/noel-template.dts | sed '/MULTICORE/d' | sed '/NOETH/d' > $dts/noel-mc-noeth.dts
-	cat $dts/noel-template.dts | sed '/ETHERNET/d' > $dts/noel-uc-eth.dts
-	cat $dts/noel-template.dts | sed '/ETHERNET/d' | sed '/MULTICORE/d' > $dts/noel-mc-eth.dts
-	for i in $dts/*; do
-		dtc -I dts -O dtb -o $dtb/$(basename -s .dts $i).dtb  $i
-	done
-}
-
 function start_qemu() {
 	mkdir -p $dtb
-	compile_dts
 
 	if [[ $1 == "uc" ]]; then
 		CPUS=1
@@ -219,7 +208,6 @@ function build_jailhouse() {
 
 function deploy() {
 	rsync -avz -e ssh \
-		$dtb/noel-*.dtb \
 		$KERNEL \
 		${KERNEL}.gz \
 		$VMLINUX \
@@ -256,8 +244,6 @@ if [[ $cmd == "debug" ]]; then
 	debug
 elif [[ $cmd == "initrd" ]]; then
 	build_initrd
-elif [[ $cmd == "dts" ]]; then
-	compile_dts
 elif [[ $cmd == "jailhouse" ]]; then
 	build_jailhouse
 elif [[ $cmd == "linux" ]]; then
