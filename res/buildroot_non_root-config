@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2024.11-204-ga0ebdd5cd8 Configuration
+# Buildroot 2024.11-647-g16adbd4df0 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -32,7 +32,6 @@ BR2_USE_MMU=y
 # BR2_mipsel is not set
 # BR2_mips64 is not set
 # BR2_mips64el is not set
-# BR2_nios2 is not set
 # BR2_or1k is not set
 # BR2_powerpc is not set
 # BR2_powerpc64 is not set
@@ -107,7 +106,7 @@ BR2_KERNEL_HEADERS_6_12=y
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="6.12.5"
+BR2_DEFAULT_KERNEL_HEADERS="6.12.10"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -973,10 +972,6 @@ BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 #
 
 #
-# directfb needs a glibc or uClibc toolchain w/ C++, NPTL, gcc >= 4.5, dynamic library
-#
-
-#
 # efl needs a toolchain w/ C++, dynamic library, gcc >= 4.9, host gcc >= 4.9, threads, wchar
 #
 # BR2_PACKAGE_FB_TEST_APP is not set
@@ -995,10 +990,6 @@ BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 # BR2_PACKAGE_GRAPHICSMAGICK is not set
 # BR2_PACKAGE_IMAGEMAGICK is not set
 # BR2_PACKAGE_LIBGLVND is not set
-
-#
-# linux-fusion needs a Linux kernel to be built
-#
 
 #
 # mesa3d needs a toolchain w/ gcc >=8, C++, NPTL, dynamic library
@@ -1337,6 +1328,7 @@ BR2_PACKAGE_HAS_UDEV=y
 #
 # usbguard needs a toolchain w/ C++, threads, dynamic library, gcc >= 8
 #
+# BR2_PACKAGE_USBIP is not set
 # BR2_PACKAGE_USBMOUNT is not set
 # BR2_PACKAGE_USBUTILS is not set
 # BR2_PACKAGE_W_SCAN is not set
@@ -1604,6 +1596,7 @@ BR2_PACKAGE_LIBOPENSSL_ENABLE_SSL_TRACE=y
 BR2_PACKAGE_HAS_OPENSSL=y
 BR2_PACKAGE_PROVIDES_OPENSSL="libopenssl"
 BR2_PACKAGE_PROVIDES_HOST_OPENSSL="host-libopenssl"
+# BR2_PACKAGE_PARSEC is not set
 # BR2_PACKAGE_PARSEC_TOOL is not set
 # BR2_PACKAGE_PKCS11_HELPER is not set
 # BR2_PACKAGE_RHASH is not set
@@ -2126,7 +2119,7 @@ BR2_PACKAGE_EXPAT=y
 #
 
 #
-# log4cxx needs a toolchain w/ C++, threads, dynamic library
+# log4cxx needs a toolchain w/ C++, threads, dynamic library, wchar
 #
 
 #
@@ -3138,7 +3131,6 @@ BR2_PACKAGE_Z3_ARCH_SUPPORTS=y
 #
 BR2_PACKAGE_HAPROXY_ARCH_SUPPORTS=y
 # BR2_PACKAGE_HAPROXY is not set
-# BR2_PACKAGE_HIAWATHA is not set
 # BR2_PACKAGE_HOSTAPD is not set
 # BR2_PACKAGE_HTPDATE is not set
 # BR2_PACKAGE_HTTPING is not set
@@ -4010,6 +4002,18 @@ BR2_PACKAGE_HOST_SYSTEMD=y
 #
 # Legacy options removed in 2025.02
 #
+# BR2_nios2 is not set
+# BR2_TOOLCHAIN_EXTERNAL_BOOTLIN_NIOS2_GLIBC_BLEEDING_EDGE is not set
+# BR2_TOOLCHAIN_EXTERNAL_BOOTLIN_NIOS2_GLIBC_STABLE is not set
+# BR2_PACKAGE_DIRECTFB is not set
+# BR2_PACKAGE_SDL2_DIRECTFB is not set
+# BR2_PACKAGE_SDL_DIRECTFB is not set
+# BR2_PACKAGE_QT5BASE_DIRECTFB is not set
+# BR2_PACKAGE_GST1_PLUGINS_BAD_PLUGIN_DIRECTFB is not set
+# BR2_PACKAGE_LITE is not set
+# BR2_PACKAGE_LINUX_FUSION is not set
+# BR2_PACKAGE_DIRECTFB_EXAMPLES is not set
+# BR2_PACKAGE_HIAWATHA is not set
 # BR2_PACKAGE_MONGODB is not set
 # BR2_PACKAGE_PYTHON_M2CRYPTO is not set
 # BR2_KERNEL_HEADERS_4_19 is not set
