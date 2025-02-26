@@ -135,24 +135,28 @@ function start_qemu() {
 		-cpu rv64,h=true -smp cpus=$CPUS \
 		-m 1G \
 		-display none \
-		-serial mon:stdio \
+		-serial mon:stdio -device usb-ehci \
 		-monitor telnet:127.0.0.1:55555,server,nowait \
 		-kernel $KERNEL \
 		-initrd $INITRD \
 		-machine $QEMU_MACHINE \
 		-netdev user,id=net,hostfwd=::33333-:22,hostfwd=::33344-:23 \
 		-device e1000e,addr=2.0,netdev=net \
+		-device pci-lfd-qpx,addr=e.0 \
 		-append "mem=768M ip=dhcp" \
+		-d guest_errors,unimp \
 		-s
 }
 
 function build_initrd() {
-	cd $dst_rootfs
+	make -C ../../qpx_test
 
+	cd $dst_rootfs
 	mkdir -p root
 	# comment out to save space (rocket)
 	cp -av $KERNEL ./root/
 	cp -av ../../buildroot_non_root/images/rootfs.cpio.gz ./root/
+	cp -av ../../../qpx_test/qpx_test ./root/
 
 	mkdir -p ./etc/jailhouse
 	cp -av $jailhouse/configs/riscv/dts/*.dtb \
@@ -269,32 +273,32 @@ elif [[ $cmd == "prepare_buildroot" ]]; then
 elif [[ $cmd == "qemu_aplic_uc" ]]; then
 	QEMU_MACHINE="virt,aia=aplic"
 	build_jailhouse
-	#build_initrd
+	build_initrd
 	start_qemu uc virt
 elif [[ $cmd == "qemu_aplic_mc" ]]; then
 	QEMU_MACHINE="virt,aia=aplic"
 	build_jailhouse
-	#build_initrd
+	build_initrd
 	start_qemu mc virt
 elif [[ $cmd == "qemu_aplic_imsic_uc" ]]; then
 	QEMU_MACHINE="virt,aia=aplic-imsic,aia-guests=3"
 	build_jailhouse
-	#build_initrd
+	build_initrd
 	start_qemu uc virt
 elif [[ $cmd == "qemu_aplic_imsic_mc" ]]; then
 	QEMU_MACHINE="virt,aia=aplic-imsic,aia-guests=3"
 	build_jailhouse
-	#build_initrd
+	build_initrd
 	start_qemu mc virt
 elif [[ $cmd == "qemu_plic_uc" ]]; then
 	QEMU_MACHINE="virt"
 	build_jailhouse
-	#build_initrd
+	build_initrd
 	start_qemu uc virt
 elif [[ $cmd == "qemu_plic_mc" ]]; then
 	QEMU_MACHINE="virt"
 	build_jailhouse
-	#build_initrd
+	build_initrd
 	start_qemu mc virt
 else
 	echo "Unknown target: $cmd"
