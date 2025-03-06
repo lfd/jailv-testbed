@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Buildroot 2024.11-647-g16adbd4df0 Configuration
+# Buildroot 2025.02-rc1-12-ge070406523 Configuration
 #
 BR2_HAVE_DOT_CONFIG=y
 BR2_HOST_GCC_AT_LEAST_4_9=y
@@ -106,7 +106,7 @@ BR2_KERNEL_HEADERS_6_12=y
 # BR2_KERNEL_HEADERS_CUSTOM_TARBALL is not set
 # BR2_KERNEL_HEADERS_CUSTOM_GIT is not set
 BR2_KERNEL_HEADERS_LATEST=y
-BR2_DEFAULT_KERNEL_HEADERS="6.12.10"
+BR2_DEFAULT_KERNEL_HEADERS="6.12.17"
 BR2_PACKAGE_LINUX_HEADERS=y
 BR2_PACKAGE_MUSL_ARCH_SUPPORTS=y
 BR2_PACKAGE_MUSL_SUPPORTS=y
@@ -126,10 +126,10 @@ BR2_PACKAGE_GLIBC=y
 # Binutils Options
 #
 BR2_PACKAGE_HOST_BINUTILS_SUPPORTS_CFI=y
-# BR2_BINUTILS_VERSION_2_41_X is not set
 # BR2_BINUTILS_VERSION_2_42_X is not set
-BR2_BINUTILS_VERSION_2_43_X=y
-BR2_BINUTILS_VERSION="2.43.1"
+# BR2_BINUTILS_VERSION_2_43_X is not set
+BR2_BINUTILS_VERSION_2_44_X=y
+BR2_BINUTILS_VERSION="2.44"
 # BR2_BINUTILS_GPROFNG is not set
 BR2_BINUTILS_EXTRA_CONFIG_OPTIONS=""
 
@@ -504,7 +504,6 @@ BR2_PACKAGE_KODI_ARCH_SUPPORTS=y
 #
 # BR2_PACKAGE_LAME is not set
 # BR2_PACKAGE_MADPLAY is not set
-# BR2_PACKAGE_MIMIC is not set
 # BR2_PACKAGE_MINIMODEM is not set
 # BR2_PACKAGE_MIRACLECAST is not set
 
@@ -649,7 +648,6 @@ BR2_PACKAGE_GDB_ARCH_SUPPORTS=y
 # BR2_PACKAGE_HYPERFINE is not set
 # BR2_PACKAGE_IOZONE is not set
 # BR2_PACKAGE_KMEMD is not set
-# BR2_PACKAGE_LATENCYTOP is not set
 # BR2_PACKAGE_LIBBPF is not set
 # BR2_PACKAGE_LIBTRACEEVENT is not set
 # BR2_PACKAGE_LIBTRACEFS is not set
@@ -684,7 +682,6 @@ BR2_PACKAGE_PERFTEST_ARCH_SUPPORTS=y
 #
 # BR2_PACKAGE_POKE is not set
 # BR2_PACKAGE_PV is not set
-# BR2_PACKAGE_RAMSMP is not set
 # BR2_PACKAGE_RAMSPEED is not set
 # BR2_PACKAGE_RT_TESTS is not set
 
@@ -775,6 +772,10 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 # aufs-util needs a linux kernel and a toolchain w/ threads
 #
 # BR2_PACKAGE_AUTOFS is not set
+
+#
+# bmap-writer needs a toolchain w/ C++, wchar
+#
 # BR2_PACKAGE_BTRFS_PROGS is not set
 # BR2_PACKAGE_CIFS_UTILS is not set
 # BR2_PACKAGE_CPIO is not set
@@ -798,7 +799,6 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 # BR2_PACKAGE_FWUP is not set
 # BR2_PACKAGE_GENEXT2FS is not set
 # BR2_PACKAGE_GENPART is not set
-# BR2_PACKAGE_GENROMFS is not set
 # BR2_PACKAGE_GOCRYPTFS is not set
 # BR2_PACKAGE_IMX_USB_LOADER is not set
 # BR2_PACKAGE_MMC_UTILS is not set
@@ -830,7 +830,6 @@ BR2_PACKAGE_PROVIDES_HOST_GETTEXT="host-gettext-tiny"
 # Cursors
 #
 # BR2_PACKAGE_COMIX_CURSORS is not set
-# BR2_PACKAGE_OBSIDIAN_CURSORS is not set
 
 #
 # Fonts
@@ -1062,7 +1061,9 @@ BR2_PACKAGE_NETSURF_ARCH_SUPPORTS=y
 # BR2_PACKAGE_BRCMFMAC_SDIO_FIRMWARE_RPI is not set
 # BR2_PACKAGE_LINUX_FIRMWARE is not set
 # BR2_PACKAGE_MURATA_CYW_FW is not set
+# BR2_PACKAGE_NXP_BT_WIFI_FIRMWARE is not set
 # BR2_PACKAGE_ODROIDC2_FIRMWARE is not set
+# BR2_PACKAGE_PANEL_MIPI_DBI_FIRMWARE is not set
 # BR2_PACKAGE_QCOM_DB410C_FIRMWARE is not set
 # BR2_PACKAGE_QORIQ_FM_UCODE is not set
 # BR2_PACKAGE_RCW_SMARC_SAL28 is not set
@@ -1217,6 +1218,10 @@ BR2_PACKAGE_KBD=y
 # BR2_PACKAGE_NVIDIA_MODPROBE is not set
 # BR2_PACKAGE_NVIDIA_PERSISTENCED is not set
 # BR2_PACKAGE_NVME is not set
+
+#
+# nxp-mwifiex needs a Linux kernel to be built
+#
 # BR2_PACKAGE_OFONO is not set
 
 #
@@ -1331,7 +1336,6 @@ BR2_PACKAGE_HAS_UDEV=y
 # BR2_PACKAGE_USBIP is not set
 # BR2_PACKAGE_USBMOUNT is not set
 # BR2_PACKAGE_USBUTILS is not set
-# BR2_PACKAGE_W_SCAN is not set
 
 #
 # wilc kernel module needs a Linux kernel to be built
@@ -1459,6 +1463,7 @@ BR2_PACKAGE_OPENAL_ARCH_SUPPORTS=y
 # BR2_PACKAGE_OPUS is not set
 # BR2_PACKAGE_OPUSFILE is not set
 # BR2_PACKAGE_PORTAUDIO is not set
+# BR2_PACKAGE_RNNOISE is not set
 # BR2_PACKAGE_SBC is not set
 # BR2_PACKAGE_SPANDSP is not set
 # BR2_PACKAGE_SPEEX is not set
@@ -2001,7 +2006,6 @@ BR2_PACKAGE_GNU_EFI_ARCH_SUPPORTS=y
 #
 # Javascript
 #
-# BR2_PACKAGE_ANGULARJS is not set
 # BR2_PACKAGE_BOOTSTRAP is not set
 # BR2_PACKAGE_CHARTJS is not set
 # BR2_PACKAGE_DATATABLES is not set
@@ -2583,6 +2587,11 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 #
 # BR2_PACKAGE_ELFUTILS is not set
 # BR2_PACKAGE_ELL is not set
+
+#
+# farmhash needs a toolchain w/ C++11
+#
+# BR2_PACKAGE_FFT2D is not set
 # BR2_PACKAGE_FFTW is not set
 
 #
@@ -2593,11 +2602,16 @@ BR2_PACKAGE_LIBCAMERA_ARCH_SUPPORTS=y
 # flatbuffers needs a toolchain w/ C++, gcc >= 4.7
 #
 # BR2_PACKAGE_FLATCC is not set
+# BR2_PACKAGE_FP16 is not set
 # BR2_PACKAGE_FXDIV is not set
 # BR2_PACKAGE_GCONF is not set
 
 #
 # gdal needs a toolchain w/ C++, dynamic library, gcc >= 4.7, NPTL, wchar
+#
+
+#
+# gemmlowp needs a toolchain w/ C++11
 #
 
 #
@@ -2715,7 +2729,7 @@ BR2_PACKAGE_LIBNSPR_ARCH_SUPPORT=y
 # BR2_PACKAGE_LIBNSPR is not set
 
 #
-# libosmium needs a toolchain w/ C++, wchar, threads, gcc >= 4.7
+# libosmium needs a toolchain w/ C++, wchar, threads, gcc >= 5
 #
 
 #
@@ -2810,7 +2824,7 @@ BR2_PACKAGE_HOST_PROTOBUF_ARCH_SUPPORTS=y
 BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 
 #
-# protobuf needs a toolchain w/ C++, threads, dynamic library, gcc >= 4.8
+# protobuf needs a toolchain w/ C++, threads, dynamic library, gcc >= 8
 #
 
 #
@@ -2820,6 +2834,8 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 #
 # protozero needs a toolchain w/ C++, gcc >= 4.7
 #
+# BR2_PACKAGE_PSIMD is not set
+# BR2_PACKAGE_PTHREADPOOL is not set
 
 #
 # qhull needs a toolchain w/ C++, gcc >= 4.4
@@ -2832,6 +2848,10 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 #
 
 #
+# ruy needs a toolchain w/ C++14, threads
+#
+
+#
 # shapelib needs a toolchain w/ C++, threads
 #
 # BR2_PACKAGE_SKALIBS is not set
@@ -2839,6 +2859,10 @@ BR2_PACKAGE_PROTOBUF_ARCH_SUPPORTS=y
 
 #
 # tbb needs a glibc or musl toolchain w/ dynamic library, threads, C++
+#
+
+#
+# tensorflow-lite needs a toolchain w/ gcc >= 8, C++, threads
 #
 # BR2_PACKAGE_TINYCBOR is not set
 
@@ -2858,6 +2882,10 @@ BR2_PACKAGE_TZDATA=y
 
 #
 # xapian needs a toolchain w/ C++
+#
+
+#
+# xnnpack needs a toolchain w/ C++14, threads
 #
 
 #
@@ -2935,6 +2963,10 @@ BR2_PACKAGE_READLINE=y
 # BR2_PACKAGE_UTF8PROC is not set
 
 #
+# taglib needs a toolchain w/ C++
+#
+
+#
 # Mail
 #
 # BR2_PACKAGE_DOVECOT is not set
@@ -2998,6 +3030,7 @@ BR2_PACKAGE_QEMU_ARCH_SUPPORTS_TARGET=y
 #
 # BR2_PACKAGE_RTL_433 is not set
 # BR2_PACKAGE_SHARED_MIME_INFO is not set
+# BR2_PACKAGE_SNOOZE is not set
 
 #
 # sunwait needs a toolchain w/ C++
@@ -3218,7 +3251,7 @@ BR2_PACKAGE_MONGREL2_LIBC_SUPPORTS=y
 #
 
 #
-# mosh needs a toolchain w/ C++, threads, dynamic library, wchar, gcc >= 4.8
+# mosh needs a toolchain w/ C++, threads, dynamic library, wchar, gcc >= 8
 #
 # BR2_PACKAGE_MOSQUITTO is not set
 # BR2_PACKAGE_MROUTED is not set
@@ -3479,6 +3512,7 @@ BR2_PACKAGE_OPENSSH_KEY_UTILS=y
 #
 # BR2_PACKAGE_CHECKPOLICY is not set
 # BR2_PACKAGE_IMA_EVM_UTILS is not set
+# BR2_PACKAGE_LYNIS is not set
 # BR2_PACKAGE_OPTEE_CLIENT is not set
 # BR2_PACKAGE_PAXTEST is not set
 # BR2_PACKAGE_REFPOLICY is not set
@@ -3838,7 +3872,6 @@ BR2_TARGET_ROOTFS_CPIO_GZIP=y
 #
 # BR2_TARGET_ROOTFS_JFFS2 is not set
 # BR2_TARGET_ROOTFS_OCI is not set
-# BR2_TARGET_ROOTFS_ROMFS is not set
 # BR2_TARGET_ROOTFS_SQUASHFS is not set
 # BR2_TARGET_ROOTFS_TAR is not set
 # BR2_TARGET_ROOTFS_UBI is not set
@@ -3858,6 +3891,10 @@ BR2_TARGET_GRUB2_ARCH_SUPPORTS=y
 # BR2_TARGET_UBOOT is not set
 
 #
+# xilinx-embeddedsw needs a bare metal toolchain for tuple microblazeel-xilinx-elf
+#
+
+#
 # Host utilities
 #
 # BR2_PACKAGE_HOST_ABOOTIMG is not set
@@ -3870,6 +3907,7 @@ BR2_PACKAGE_HOST_ARM_GNU_TOOLCHAIN_SUPPORTS=y
 # BR2_PACKAGE_HOST_ASN1C is not set
 # BR2_PACKAGE_HOST_BABELTRACE2 is not set
 # BR2_PACKAGE_HOST_BMAP_TOOLS is not set
+# BR2_PACKAGE_HOST_BMAP_WRITER is not set
 # BR2_PACKAGE_HOST_BOOTGEN is not set
 # BR2_PACKAGE_HOST_BTRFS_PROGS is not set
 # BR2_PACKAGE_HOST_CHECKPOLICY is not set
@@ -4002,10 +4040,22 @@ BR2_PACKAGE_HOST_SYSTEMD=y
 #
 # Legacy options removed in 2025.02
 #
+# BR2_PACKAGE_ANGULARJS is not set
+# BR2_PACKAGE_ANGULAR_WEBSOCKET is not set
+# BR2_PACKAGE_LATENCYTOP is not set
+# BR2_PACKAGE_OBSIDIAN_CURSORS is not set
+# BR2_PACKAGE_W_SCAN is not set
+# BR2_PACKAGE_GENROMFS is not set
+# BR2_TARGET_ROOTFS_ROMFS is not set
+# BR2_BINUTILS_VERSION_2_41_X is not set
+# BR2_TARGET_ROOTFS_EXT2_2r0 is not set
+# BR2_GDB_VERSION_13 is not set
 # BR2_nios2 is not set
 # BR2_TOOLCHAIN_EXTERNAL_BOOTLIN_NIOS2_GLIBC_BLEEDING_EDGE is not set
 # BR2_TOOLCHAIN_EXTERNAL_BOOTLIN_NIOS2_GLIBC_STABLE is not set
 # BR2_PACKAGE_DIRECTFB is not set
+# BR2_PACKAGE_GST_OMX is not set
+# BR2_PACKAGE_MIMIC is not set
 # BR2_PACKAGE_SDL2_DIRECTFB is not set
 # BR2_PACKAGE_SDL_DIRECTFB is not set
 # BR2_PACKAGE_QT5BASE_DIRECTFB is not set
@@ -4022,6 +4072,7 @@ BR2_PACKAGE_HOST_SYSTEMD=y
 # BR2_PACKAGE_FCONFIG is not set
 # BR2_PACKAGE_LIBHID is not set
 # BR2_PACKAGE_QUAGGA is not set
+# BR2_PACKAGE_RAMSMP is not set
 
 #
 # Legacy options removed in 2024.11
